@@ -100,7 +100,7 @@ missing context (especially for ""ABC"")
 
 → Ask clarification questions before deep analysis.
 
-🔹 MENTORING STYLE (ALWAYS ON)
+# MENTORING STYLE (ALWAYS ON)
 
 Speak like a clear-minded friend, not a lecturer
 
