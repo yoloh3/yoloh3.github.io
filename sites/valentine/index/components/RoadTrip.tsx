@@ -22,9 +22,15 @@ const RoadTrip: React.FC = () => {
   });
 
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true); // Controls animation (auto-scroll)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(true); // Controls music only
   const [isFinished, setIsFinished] = useState(false);
   const [videoCompleted, setVideoCompleted] = useState(false); // Track if video has been watched
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false); // Track if video is currently playing
+
+  // Audio refs for background music
+  const bgMusicRef = useRef<HTMLAudioElement>(null);
+  const videoMusicRef = useRef<HTMLAudioElement>(null);
 
   // Auto-scroll loop
   useEffect(() => {
@@ -89,6 +95,54 @@ const RoadTrip: React.FC = () => {
 
   }, [scrollX]);
 
+  // Music switching logic (now controlled by isMusicPlaying, not isPlaying)
+  useEffect(() => {
+    if (bgMusicRef.current && videoMusicRef.current) {
+      if (isVideoPlaying) {
+        // Video is playing: STOP BG music first, then play video music immediately
+        bgMusicRef.current.pause();
+        bgMusicRef.current.currentTime = 0; // Reset BG music position
+        videoMusicRef.current.currentTime = 0;
+        if (isMusicPlaying) {
+          videoMusicRef.current.play().catch(e => console.log("Video music play failed:", e));
+        }
+      } else if (videoCompleted) {
+        // Video has ended: keep video music playing (don't switch back to BG music)
+        bgMusicRef.current.pause();
+        if (isMusicPlaying) {
+          videoMusicRef.current.play().catch(e => console.log("Video music play failed:", e));
+        } else {
+          videoMusicRef.current.pause();
+        }
+      } else {
+        // Normal state: play BG music
+        videoMusicRef.current.pause();
+        if (isMusicPlaying) {
+          bgMusicRef.current.play().catch(e => console.log("BG music play failed:", e));
+        } else {
+          bgMusicRef.current.pause();
+        }
+      }
+    }
+  }, [isVideoPlaying, videoCompleted, isMusicPlaying]);
+
+  // Auto-start music on component mount (immediately when site opens)
+  useEffect(() => {
+    // Try to autoplay immediately
+    if (bgMusicRef.current) {
+      bgMusicRef.current.play().catch(e => {
+        console.log("Autoplay blocked, waiting for user interaction:", e);
+        // If autoplay is blocked, wait for first user interaction
+        const startMusic = () => {
+          if (bgMusicRef.current && !isVideoPlaying) {
+            bgMusicRef.current.play().catch(err => console.log("Music play failed:", err));
+          }
+        };
+        document.addEventListener('click', startMusic, { once: true });
+      });
+    }
+  }, []);
+
 
 
   const handleRestart = () => {
@@ -98,6 +152,19 @@ const RoadTrip: React.FC = () => {
       setIsPlaying(true);
       setIsFinished(false);
       setActiveMilestone(null);
+      setVideoCompleted(false);
+      setIsVideoPlaying(false);
+
+      // Restart BG music
+      if (bgMusicRef.current) {
+        bgMusicRef.current.currentTime = 0;
+        bgMusicRef.current.play().catch(e => console.log("Restart music failed:", e));
+      }
+      // Stop video music
+      if (videoMusicRef.current) {
+        videoMusicRef.current.pause();
+        videoMusicRef.current.currentTime = 0;
+      }
     }
   };
 
@@ -105,14 +172,14 @@ const RoadTrip: React.FC = () => {
     <div className={`relative w-full h-screen overflow-hidden ${THEME.sky}`}>
       {/* Header UI */}
       <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
-        {/* Music Control with Text */}
+        {/* Music Control - Only controls audio, not animation */}
         <button
-          onClick={() => setIsPlaying(!isPlaying)}
+          onClick={() => setIsMusicPlaying(!isMusicPlaying)}
           className="bg-white/90 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2"
         >
-          <span className="text-xl">{isPlaying ? '⏸️' : '▶️'}</span>
+          <span className="text-xl">{isMusicPlaying ? '⏸️' : '▶️'}</span>
           <span className="text-sm font-medium text-gray-700">
-            {isPlaying ? 'Music' : 'Music'}
+            {isMusicPlaying ? 'Music' : 'Music'}
           </span>
         </button>
 
@@ -238,7 +305,11 @@ const RoadTrip: React.FC = () => {
               <GiftBox
                 stopX={finalStopX}
                 stopY={finalStopY}
-                onVideoEnd={() => setVideoCompleted(true)}
+                onVideoStart={() => setIsVideoPlaying(true)}
+                onVideoEnd={() => {
+                  setVideoCompleted(true);
+                  setIsVideoPlaying(false);
+                }}
               />
             );
           })()}
@@ -256,12 +327,18 @@ const RoadTrip: React.FC = () => {
             {/* Speech bubble if milestone active */}
             {activeMilestone && (
               <div className="absolute -top-16 -right-10 bg-white p-2 rounded-lg rounded-bl-none shadow-md text-xs font-bold animate-bounce z-30 whitespace-nowrap">
-                {activeMilestone === 6 ? "❤️️️️️️❤️️️️️❤️️️️️️" : "✨✨✨"}
+                {activeMilestone === 6 ? "️️️️️❤️️️️" : "✨"}
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* Background Music */}
+      <audio ref={bgMusicRef} src="/media/Until_I_found_you.mp3" loop />
+
+      {/* Video Music */}
+      <audio ref={videoMusicRef} src="/media/O_thi_di.mp3" />
     </div>
   );
 };

@@ -5,7 +5,7 @@ const AMPLITUDE_1 = 60;
 const FREQUENCY_1 = 0.002;
 const AMPLITUDE_2 = 30;
 const FREQUENCY_2 = 0.005;
-const BASE_HEIGHT = 400; // Y position from top
+const BASE_HEIGHT = 550; // Y position from top (increased further to lower terrain and prevent photo cropping)
 
 /**
  * Calculates Y position and slope angle for a given X on the road.
@@ -13,14 +13,14 @@ const BASE_HEIGHT = 400; // Y position from top
  */
 export const getTerrainPoint = (x: number): TerrainPoint => {
   // Height calculation
-  const y = BASE_HEIGHT + 
-            AMPLITUDE_1 * Math.sin(x * FREQUENCY_1) + 
-            AMPLITUDE_2 * Math.sin(x * FREQUENCY_2);
+  const y = BASE_HEIGHT +
+    AMPLITUDE_1 * Math.sin(x * FREQUENCY_1) +
+    AMPLITUDE_2 * Math.sin(x * FREQUENCY_2);
 
   // Derivative for slope (dy/dx)
   // y' = A1*F1*cos(F1*x) + A2*F2*cos(F2*x)
   const dy = AMPLITUDE_1 * FREQUENCY_1 * Math.cos(x * FREQUENCY_1) +
-             AMPLITUDE_2 * FREQUENCY_2 * Math.cos(x * FREQUENCY_2);
+    AMPLITUDE_2 * FREQUENCY_2 * Math.cos(x * FREQUENCY_2);
 
   // Angle in degrees
   const angle = Math.atan(dy) * (180 / Math.PI);

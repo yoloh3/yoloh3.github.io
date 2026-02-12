@@ -6,15 +6,17 @@ interface GiftBoxProps {
     stopY: number; // Y position of the final stop
     onComplete?: () => void;
     onVideoEnd?: () => void; // Callback to update milestone content
+    onVideoStart?: () => void; // Callback when video starts playing
 }
 
-export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd }: GiftBoxProps) {
+export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoStart }: GiftBoxProps) {
     const [showVideo, setShowVideo] = useState(false);
     const [videoEnded, setVideoEnded] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const handleStopClick = () => {
         setShowVideo(true);
+        if (onVideoStart) onVideoStart(); // Notify parent that video is starting
         setTimeout(() => {
             videoRef.current?.play();
         }, 100);
@@ -55,17 +57,17 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd }: GiftBo
 
     return (
         <>
-            {/* Pointing finger - positioned higher above the stop */}
+            {/* Pointing finger - positioned to the right of the stop */}
             {!showVideo && !videoEnded && (
                 <div
-                    className="absolute transform -translate-x-1/2 z-30 pointer-events-none"
+                    className="absolute z-30 pointer-events-none"
                     style={{
-                        left: stopX,
-                        top: stopY - 180 // Much higher above the stop
+                        left: stopX + 120, // Position further to the right
+                        top: stopY - 250 // Raise higher
                     }}
                 >
                     <div className="animate-bounce text-6xl">
-                        👇
+                        👈
                     </div>
                 </div>
             )}
@@ -73,7 +75,7 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd }: GiftBo
             {/* Full-screen clickable overlay - click anywhere to trigger video */}
             {!showVideo && !videoEnded && (
                 <div
-                    className="fixed inset-0 z-25 cursor-pointer"
+                    className="fixed inset-0 z-40 cursor-pointer"
                     onClick={handleStopClick}
                     style={{
                         background: 'transparent'
