@@ -5,6 +5,6 @@
 *.out
 *.exe
 *~*
-diary/
 *.DS_Store
 .*
+*Zone.Identifier
