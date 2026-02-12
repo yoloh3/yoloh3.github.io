@@ -99,13 +99,9 @@ const RoadTrip: React.FC = () => {
   useEffect(() => {
     if (bgMusicRef.current && videoMusicRef.current) {
       if (isVideoPlaying) {
-        // Video is playing: STOP BG music first, then play video music immediately
-        bgMusicRef.current.pause();
-        bgMusicRef.current.currentTime = 0; // Reset BG music position
-        videoMusicRef.current.currentTime = 0;
-        if (isMusicPlaying) {
-          videoMusicRef.current.play().catch(e => console.log("Video music play failed:", e));
-        }
+        // Video is playing: KEEP BG music playing (don't pause)
+        // YouTube video has its own audio, but we keep background music too
+        videoMusicRef.current.pause();
       } else if (videoCompleted) {
         // Video has ended: keep video music playing (don't switch back to BG music)
         bgMusicRef.current.pause();

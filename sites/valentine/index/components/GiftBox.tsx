@@ -89,7 +89,7 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
                     <div className="relative max-w-6xl w-full mx-4">
                         <div className="relative w-full aspect-video">
                             <iframe
-                                src="https://www.youtube.com/embed/pqVB9C_uigQ?autoplay=1&rel=0&modestbranding=1"
+                                src="https://www.youtube.com/embed/pqVB9C_uigQ?autoplay=1&mute=1&rel=0&modestbranding=1"
                                 className="w-full h-full rounded-2xl shadow-2xl"
                                 allow="autoplay; encrypted-media"
                                 allowFullScreen
