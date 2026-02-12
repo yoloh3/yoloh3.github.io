@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
   return {
-    base: '/sites/valentine/index/', // GitHub Pages base path
+    base: '/sites/valentine/index/dist/', // GitHub Pages base path including dist folder
     server: {
       port: 3000,
       host: '0.0.0.0',
