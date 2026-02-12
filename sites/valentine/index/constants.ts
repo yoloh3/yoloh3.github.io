@@ -11,7 +11,7 @@ export const MILESTONES: Milestone[] = [
     title: "Lần đầu nói chuyện",
     emoji: "💬",
     content: "LinkedIn → Messenger → và rồi...",
-    image: "/photos/first_talk.jpg",
+    image: "photos/first_talk.jpg",
     positionX: 3,
   },
   {
@@ -20,7 +20,7 @@ export const MILESTONES: Milestone[] = [
     title: "Nha Trang Trip",
     emoji: "📸",
     content: "Company trip và bức ảnh chung đầu tiên 📷",
-    image: "/photos/first_picture.JPG",
+    image: "photos/first_picture.JPG",
     positionX: 12,
   },
   {
@@ -29,7 +29,7 @@ export const MILESTONES: Milestone[] = [
     title: "Coi phim cùng nhau",
     emoji: "🎬",
     content: "Xem phim, ăn tối, cafe khuya, chở về — nhẹ nhàng mà bình yên 🏍️",
-    image: "/photos/avatar3.jpeg",
+    image: "photos/avatar3.jpeg",
     positionX: 25,
   },
   {
@@ -38,7 +38,7 @@ export const MILESTONES: Milestone[] = [
     title: "Đi nghe nhạc cùng nhau",
     emoji: "🎵",
     content: "Em nói mình chỉ là 'đồng nghiệp cũ'... anh cười mà lệ đổ trong tim 😅",
-    image: "/photos/second_date.jpeg",
+    image: "photos/second_date.jpeg",
     positionX: 40,
   },
   {
@@ -47,7 +47,7 @@ export const MILESTONES: Milestone[] = [
     title: "Ngắm mặt trời lặn",
     emoji: "🌅",
     content: "Cờ vây là khởi đầu... và sau đó là những chia sẻ sâu sắc và lần đầu tiên chúng ta nắm tay nhau <3",
-    image: "/photos/third_date.jpeg",
+    image: "photos/third_date.jpeg",
     positionX: 57,
   },
   {
@@ -56,7 +56,7 @@ export const MILESTONES: Milestone[] = [
     title: "5th Date: First Kiss",
     emoji: "💋",
     content: "Em bắt anh phải đuổi theo em hoài à, nhưng mà, anh vẫn sẽ luôn đuổi theo hehe",
-    image: "/photos/fifth_date2.jpeg",
+    image: "photos/fifth_date2.jpeg",
     positionX: 75,
   },
   {
@@ -66,7 +66,7 @@ export const MILESTONES: Milestone[] = [
     emoji: "🎁",
     content: "Gửi Chan yêu dấu ❤️", // Before video
     contentAfterVideo: "14/2 anh không gặp được em, nhưng có một người thì vẫn luôn ở trong trái tim anh. Một món quà nhỏ gửi em hôm nay, còn lại thì để dành hôm nào chúng ta gặp nhau nhé ❤️", // After video
-    image: "/photos/fifth_date.jpeg",
+    image: "photos/fifth_date.jpeg",
     positionX: 92,
   },
 ];

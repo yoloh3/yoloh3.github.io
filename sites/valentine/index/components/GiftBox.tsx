@@ -89,7 +89,7 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
                     <div className="relative max-w-6xl w-full mx-4">
                         <video
                             ref={videoRef}
-                            src="/photos/timelapse.mp4"
+                            src="photos/timelapse.mp4"
                             className="w-full rounded-2xl shadow-2xl"
                             onEnded={handleVideoEnd}
                             controls
