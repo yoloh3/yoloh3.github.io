@@ -98,12 +98,8 @@ const RoadTrip: React.FC = () => {
   // Music switching logic (now controlled by isMusicPlaying, not isPlaying)
   useEffect(() => {
     if (bgMusicRef.current && videoMusicRef.current) {
-      if (isVideoPlaying) {
-        // Video is playing: KEEP BG music playing (don't pause)
-        // YouTube video has its own audio, but we keep background music too
-        videoMusicRef.current.pause();
-      } else if (videoCompleted) {
-        // Video has ended: keep video music playing (don't switch back to BG music)
+      if (isVideoPlaying || videoCompleted) {
+        // Video is playing OR completed: play video music (music 2)
         bgMusicRef.current.pause();
         if (isMusicPlaying) {
           videoMusicRef.current.play().catch(e => console.log("Video music play failed:", e));
@@ -111,7 +107,7 @@ const RoadTrip: React.FC = () => {
           videoMusicRef.current.pause();
         }
       } else {
-        // Normal state: play BG music
+        // Normal state: play BG music (music 1)
         videoMusicRef.current.pause();
         if (isMusicPlaying) {
           bgMusicRef.current.play().catch(e => console.log("BG music play failed:", e));
@@ -306,6 +302,7 @@ const RoadTrip: React.FC = () => {
                   setVideoCompleted(true);
                   setIsVideoPlaying(false);
                 }}
+                onComplete={() => setIsFinished(true)}
               />
             );
           })()}
