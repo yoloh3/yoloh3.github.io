@@ -87,14 +87,23 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
             {showVideo && (
                 <div className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center">
                     <div className="relative max-w-6xl w-full mx-4">
-                        <video
-                            ref={videoRef}
-                            src="photos/timelapse.mp4"
-                            className="w-full rounded-2xl shadow-2xl"
-                            onEnded={handleVideoEnd}
-                            controls
-                            autoPlay
-                        />
+                        <div className="relative w-full aspect-video">
+                            <iframe
+                                src="https://www.youtube.com/embed/pqVB9C_uigQ?autoplay=1&rel=0&modestbranding=1"
+                                className="w-full h-full rounded-2xl shadow-2xl"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                                title="Valentine Love Trip"
+                            />
+
+                            {/* Close button */}
+                            <button
+                                onClick={handleVideoEnd}
+                                className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg transition-all hover:scale-105"
+                            >
+                                ✕ Close
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}
