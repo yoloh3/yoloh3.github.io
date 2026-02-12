@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { MILESTONES, ROAD_LENGTH, THEME, VIEWPORT_HEIGHT } from '../constants';
 import { generateTerrainPath, getTerrainPoint } from '../utils/terrainUtils';
 import Motorcycle from './Motorcycle';
+import GiftBox from './GiftBox';
 import confetti from 'canvas-confetti';
 
 const RoadTrip: React.FC = () => {
@@ -23,6 +24,7 @@ const RoadTrip: React.FC = () => {
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFinished, setIsFinished] = useState(false);
+  const [videoCompleted, setVideoCompleted] = useState(false); // Track if video has been watched
 
   // Auto-scroll loop
   useEffect(() => {
@@ -87,15 +89,7 @@ const RoadTrip: React.FC = () => {
 
   }, [scrollX]);
 
-  const handleGiftClick = () => {
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#FFB6C1', '#F06C9B', '#FFD93D']
-    });
-    alert("💌 Valentine's Message:\n\n" + MILESTONES[MILESTONES.length - 1].content);
-  };
+
 
   const handleRestart = () => {
     if (containerRef.current) {
@@ -110,31 +104,29 @@ const RoadTrip: React.FC = () => {
   return (
     <div className={`relative w-full h-screen overflow-hidden ${THEME.sky}`}>
       {/* Header UI */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        {/* Play/Pause Control */}
+      <div className="fixed top-4 right-4 z-50 flex flex-col gap-2">
+        {/* Music Control with Text */}
         <button
           onClick={() => setIsPlaying(!isPlaying)}
-          className="bg-white/80 p-3 rounded-full shadow-lg hover:scale-110 transition text-xl font-bold w-12 h-12 flex items-center justify-center text-pink-500"
+          className="bg-white/90 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2"
         >
-          {isPlaying ? '⏸️' : '▶️'}
+          <span className="text-xl">{isPlaying ? '⏸️' : '▶️'}</span>
+          <span className="text-sm font-medium text-gray-700">
+            {isPlaying ? 'Music' : 'Music'}
+          </span>
+        </button>
+
+        {/* Restart Button */}
+        <button
+          onClick={handleRestart}
+          className="bg-white/90 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2"
+        >
+          <span className="text-xl">🔄</span>
+          <span className="text-sm font-medium text-gray-700">Restart</span>
         </button>
       </div>
 
-      {/* Restart Overlay */}
-      {isFinished && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 backdrop-blur-sm animate-[fadeIn_1s_ease-out]">
-          <div className="bg-white p-8 rounded-3xl shadow-2xl text-center transform hover:scale-105 transition duration-300">
-            <h2 className="text-3xl fun-font text-pink-600 mb-2">Hết đường rồi! 🏁</h2>
-            <p className="text-gray-600 mb-6">Muốn đi lại chuyến nữa không?</p>
-            <button
-              onClick={handleRestart}
-              className="bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg text-lg flex items-center gap-2 mx-auto hover:shadow-xl"
-            >
-              🔄 Đi lại từ đầu
-            </button>
-          </div>
-        </div>
-      )}
+
 
       {/* Parallax Background Layers */}
       <div className="absolute inset-0 pointer-events-none">
@@ -193,17 +185,24 @@ const RoadTrip: React.FC = () => {
                   scale: isActive ? '1.1' : '1'
                 }}
               >
-                <div className="flex flex-col items-center group cursor-pointer" onClick={m.id === 5 ? handleGiftClick : undefined}>
+                <div className="flex flex-col items-center group">
 
-                  {/* Placeholder Photo Frame */}
+                  {/* Photo Frame */}
                   <div className={`
                       bg-white p-2 pb-6 rounded-sm shadow-md rotate-[-2deg] mb-[-10px] z-10 transition-transform duration-500
                       ${isActive ? 'scale-110 rotate-0' : 'scale-75 opacity-80'}
                     `}>
                     <div className="w-32 h-24 bg-gray-200 flex items-center justify-center overflow-hidden border border-gray-100">
-                      {/* Placeholder Icon for now */}
-                      <span className="text-3xl opacity-30">🖼️</span>
-                      {/* TODO: Add real image here: <img src="..." className="w-full h-full object-cover" /> */}
+                      {m.image ? (
+                        m.image.endsWith('.mp4') ? (
+                          <video src={m.image} autoPlay loop muted playsInline className="w-full h-full object-cover" />
+                        ) : (
+                          <img src={m.image} alt={m.title} className="w-full h-full object-cover" />
+                        )
+                      ) : (
+                        // Don't show emoji in Polaroid for Valentine milestone (ID 6)
+                        m.id !== 6 && <span className="text-3xl">{m.emoji}</span>
+                      )}
                     </div>
                   </div>
 
@@ -217,7 +216,10 @@ const RoadTrip: React.FC = () => {
                     <p className="text-xs text-gray-500 font-bold">{m.date}</p>
                     {isActive && (
                       <div className="overflow-hidden animate-[fadeIn_0.5s_ease-in]">
-                        <p className="text-sm text-pink-600 mt-2 font-medium">{m.content}</p>
+                        <p className="text-sm text-pink-600 mt-2 font-medium">
+                          {/* Show contentAfterVideo if video completed and it exists, otherwise show regular content */}
+                          {m.id === 6 && videoCompleted && m.contentAfterVideo ? m.contentAfterVideo : m.content}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -226,6 +228,20 @@ const RoadTrip: React.FC = () => {
               </div>
             );
           })}
+
+          {/* Gift Box Interaction at Final Stop */}
+          {(() => {
+            const finalMilestone = MILESTONES[MILESTONES.length - 1];
+            const finalStopX = (finalMilestone.positionX / 100) * ROAD_LENGTH;
+            const finalStopY = getTerrainPoint(finalStopX).y;
+            return (
+              <GiftBox
+                stopX={finalStopX}
+                stopY={finalStopY}
+                onVideoEnd={() => setVideoCompleted(true)}
+              />
+            );
+          })()}
 
           {/* Bike (Absolute position relative to world, updated via scroll) */}
           <div
@@ -240,7 +256,7 @@ const RoadTrip: React.FC = () => {
             {/* Speech bubble if milestone active */}
             {activeMilestone && (
               <div className="absolute -top-16 -right-10 bg-white p-2 rounded-lg rounded-bl-none shadow-md text-xs font-bold animate-bounce z-30 whitespace-nowrap">
-                {activeMilestone === 5 ? "We made it! ❤️" : "Memories! ✨"}
+                {activeMilestone === 6 ? "❤️️️️️️❤️️️️️❤️️️️️️" : "✨✨✨"}
               </div>
             )}
           </div>

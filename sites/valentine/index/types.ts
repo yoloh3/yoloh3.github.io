@@ -4,6 +4,8 @@ export interface Milestone {
   title: string;
   emoji: string;
   content: string;
+  contentAfterVideo?: string; // Content to show after video ends
+  image?: string; // Path to real photo
   positionX: number; // Percentage 0-100 of the road
 }
 

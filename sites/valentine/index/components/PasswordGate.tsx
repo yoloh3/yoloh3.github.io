@@ -50,7 +50,7 @@ const PasswordGate: React.FC<Props> = ({ onUnlock }) => {
 
         {error && (
           <div className="mt-4 text-red-500 font-bold animate-bounce">
-            Sai mật khẩu rồi anh ơi! 😜
+            Sai mật khẩu rồi bé ơi! Ngày mình xem phim Avatar 3 mà 😜
           </div>
         )}
       </div>
