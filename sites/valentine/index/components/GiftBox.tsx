@@ -40,6 +40,9 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
                 // Update milestone content after fireworks
                 if (onVideoEnd) onVideoEnd();
 
+                // Call onComplete AFTER onVideoEnd to ensure videoCompleted is set first
+                if (onComplete) onComplete();
+
                 return;
             }
 
@@ -51,8 +54,6 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
                 colors: ['#F06C9B', '#FFD93D', '#87CEEB', '#FFB6C1'],
             });
         }, 100);
-
-        if (onComplete) onComplete();
     };
 
     return (
