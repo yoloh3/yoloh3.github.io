@@ -21,8 +21,8 @@ const Motorcycle: React.FC<Props> = ({ rotation }) => {
         <div className="absolute bottom-10 left-10 w-8 h-6 bg-black rounded-t-lg"></div> {/* Seat */}
 
         {/* Riders (Simple heads) */}
-        <div className="absolute bottom-14 left-8 w-6 h-6 bg-blue-300 rounded-full border-2 border-white z-10"></div> {/* H3 */}
-        <div className="absolute bottom-12 left-12 w-6 h-6 bg-pink-300 rounded-full border-2 border-white z-10"></div> {/* Chan */}
+        <div className="absolute bottom-14 left-8 w-6 h-6 bg-pink-300 rounded-full border-2 border-white z-10"></div> {/* H3 */}
+        <div className="absolute bottom-12 left-12 w-6 h-6 bg-blue-300 rounded-full border-2 border-white z-10"></div> {/* Chan */}
 
         {/* Wind/Smoke Effect */}
         <div className="absolute bottom-4 -left-6 flex gap-1 opacity-50">

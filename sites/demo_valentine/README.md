@@ -242,6 +242,6 @@ Modern web development techniques and interactive storytelling.
 
 ---
 
-**Demo Password:** `9999`
+**Demo Password:** `demo2024`
 
 **Enjoy the journey! 🏍️💝**
