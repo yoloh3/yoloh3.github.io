@@ -10,7 +10,7 @@ export const MILESTONES = [
   },
   {
     id: 1,
-    date: "Day 8",
+    date: "Day 28",
     title: "First Kiss",
     emoji: "💋",
     content: "A magical moment...",
@@ -19,7 +19,7 @@ export const MILESTONES = [
   },
   {
     id: 2,
-    date: "Day 15",
+    date: "Day 45",
     title: "First Trip",
     emoji: "🏖️",
     content: "An unforgettable adventure...",
@@ -28,7 +28,7 @@ export const MILESTONES = [
   },
   {
     id: 3,
-    date: "Day 22",
+    date: "Day 60",
     title: "Movie Night",
     emoji: "🎬",
     content: "Cozy moments together...",
@@ -37,7 +37,7 @@ export const MILESTONES = [
   },
   {
     id: 4,
-    date: "Day 29",
+    date: "Day 100",
     title: "Celebration",
     emoji: "🧧",
     content: "A special day to remember...",
@@ -46,7 +46,7 @@ export const MILESTONES = [
   },
   {
     id: 5,
-    date: "Day 36",
+    date: "Day 111",
     title: "Reconciliation",
     emoji: "😢",
     content: "Every relationship has its ups and downs...",
@@ -55,11 +55,11 @@ export const MILESTONES = [
   },
   {
     id: 6,
-    date: "Day 42",
+    date: "Day 124",
     title: "Happy Valentine",
     emoji: "🎁",
     content: "A special message for you ❤️", // Before video
-    contentAfterVideo: "This is a demo of an interactive love journey web experience. Built with React, TypeScript, and Vite. Features include: animated road trip, milestone photos, background music switching, YouTube video integration, and confetti effects. Created to showcase modern web development techniques.", // After video
+    contentAfterVideo: "This is a demo of an interactive love journey web experience. Built with AI-assistanted Antigravity, the development flow from The1Light Vibe-coding course. Created by H3 (fb.com/yoloh3), if you interested with demo please contact me for real deployment.", // After video
     image: "photos/valentine.png",
     positionX: 92,
   },
