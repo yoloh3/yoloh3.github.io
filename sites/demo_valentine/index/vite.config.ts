@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     base: '/sites/demo_valentine/index/dist/', // GitHub Pages base path including dist folder
     server: {
-      port: 3000,
+      port: 3001,
       host: '0.0.0.0',
     },
     plugins: [react()],

@@ -16,11 +16,8 @@ export default function GiftBox({ stopX, stopY, isAtFinalStop, onComplete, onVid
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const handleStopClick = () => {
-        setShowVideo(true);
-        if (onVideoStart) onVideoStart(); // Notify parent that video is starting
-        setTimeout(() => {
-            videoRef.current?.play();
-        }, 100);
+        // Skip video in demo site - go straight to fireworks
+        handleVideoEnd();
     };
 
     const handleVideoEnd = () => {
