@@ -328,10 +328,10 @@ const RoadTrip: React.FC = () => {
       </div>
 
       {/* Background Music */}
-      <audio ref={bgMusicRef} src="media/background_music_1.mp3" loop />
+      <audio ref={bgMusicRef} src="media/O_thi_di.mp3" loop />
 
       {/* Video Music */}
-      <audio ref={videoMusicRef} src="media/background_music_2.mp3" />
+      <audio ref={videoMusicRef} src="media/Until_I_found_you.mp3" />
     </div>
   );
 };
