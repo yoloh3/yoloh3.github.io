@@ -4,12 +4,13 @@ import confetti from 'canvas-confetti';
 interface GiftBoxProps {
     stopX: number; // X position of the final stop
     stopY: number; // Y position of the final stop
+    isAtFinalStop: boolean; // Whether bike has reached the final stop
     onComplete?: () => void;
     onVideoEnd?: () => void; // Callback to update milestone content
     onVideoStart?: () => void; // Callback when video starts playing
 }
 
-export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoStart }: GiftBoxProps) {
+export default function GiftBox({ stopX, stopY, isAtFinalStop, onComplete, onVideoEnd, onVideoStart }: GiftBoxProps) {
     const [showVideo, setShowVideo] = useState(false);
     const [videoEnded, setVideoEnded] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -58,8 +59,8 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
 
     return (
         <>
-            {/* Pointing finger - positioned to the right of the stop */}
-            {!showVideo && !videoEnded && (
+            {/* Pointing finger - only show when at final stop */}
+            {isAtFinalStop && !showVideo && !videoEnded && (
                 <div
                     className="absolute z-30 pointer-events-none"
                     style={{
@@ -74,18 +75,14 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
             )}
 
 
-            {/* Clickable gift box area - only at final stop point */}
-            {!showVideo && !videoEnded && (
+            {/* Full-screen clickable overlay - ONLY show when at final stop */}
+            {isAtFinalStop && !showVideo && !videoEnded && (
                 <div
-                    className="absolute z-40 cursor-pointer"
+                    className="fixed inset-0 z-40 cursor-pointer"
                     onClick={handleStopClick}
                     style={{
-                        left: stopX - 50,
-                        top: stopY - 100,
-                        width: 200,
-                        height: 150
+                        background: 'transparent'
                     }}
-                    title="Click to open gift"
                 />
             )}
 

@@ -46,7 +46,12 @@ const RoadTrip: React.FC = () => {
 
         // Apply Scroll
         const newScroll = containerRef.current.scrollLeft + currentSpeed;
-        const maxScroll = ROAD_LENGTH - window.innerWidth;
+        // Cap scroll so the last milestone stays visible on all screen sizes
+        const lastMilestoneX = (MILESTONES[MILESTONES.length - 1].positionX / 100) * ROAD_LENGTH;
+        const maxScroll = Math.min(
+          ROAD_LENGTH - window.innerWidth,
+          lastMilestoneX - window.innerWidth / 3
+        );
 
         // Check if we reached the end
         if (newScroll < maxScroll) {
@@ -297,6 +302,7 @@ const RoadTrip: React.FC = () => {
               <GiftBox
                 stopX={finalStopX}
                 stopY={finalStopY}
+                isAtFinalStop={activeMilestone === 6}
                 onVideoStart={() => setIsVideoPlaying(true)}
                 onVideoEnd={() => {
                   setVideoCompleted(true);
@@ -317,12 +323,7 @@ const RoadTrip: React.FC = () => {
             }}
           >
             <Motorcycle rotation={bikeState.angle} />
-            {/* Speech bubble if milestone active */}
-            {activeMilestone && (
-              <div className="absolute -top-16 -right-10 bg-white p-2 rounded-lg rounded-bl-none shadow-md text-xs font-bold animate-bounce z-30 whitespace-nowrap">
-                {activeMilestone === 6 ? "️️️️️❤️️️️" : "✨"}
-              </div>
-            )}
+
           </div>
         </div>
       </div>
