@@ -74,4 +74,4 @@ export const THEME = {
   road: "#8B7355",
 };
 
-export const PASSWORD = "999"; // Demo password
+export const PASSWORD = "9999"; // Demo password

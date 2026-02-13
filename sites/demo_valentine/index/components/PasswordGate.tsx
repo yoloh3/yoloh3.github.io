@@ -49,7 +49,7 @@ const PasswordGate: React.FC<Props> = ({ onUnlock }) => {
 
         {error && (
           <div className="mt-4 text-red-500 font-bold animate-bounce">
-            Wrong password! Try: 999
+            Wrong password! Try: 9999
           </div>
         )}
       </div>
