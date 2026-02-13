@@ -1,0 +1,8 @@
+{
+  "name": "Love Trip",
+  "description": "A cartoon-style parallax road trip with image analysis memories.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
