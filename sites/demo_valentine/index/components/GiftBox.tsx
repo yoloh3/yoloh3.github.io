@@ -93,7 +93,7 @@ export default function GiftBox({ stopX, stopY, isAtFinalStop, onComplete, onVid
                                 className="w-full h-full rounded-2xl shadow-2xl"
                                 allow="autoplay; encrypted-media"
                                 allowFullScreen
-                                title="Valentine Love Trip"
+                                title="Love Road Story"
                             />
 
                             {/* Close button */}
