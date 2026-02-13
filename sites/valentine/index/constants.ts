@@ -67,7 +67,7 @@ export const MILESTONES: Milestone[] = [
     content: "Gửi Chan yêu dấu ❤️", // Before video
     contentAfterVideo: "14/2 anh không gặp được em, nhưng có một người thì vẫn luôn ở trong trái tim anh. Một món quà nhỏ gửi em hôm nay, còn lại thì để dành hôm nào chúng ta gặp nhau nhé ❤️", // After video
     image: "/photos/fifth_date.jpeg",
-    positionX: 92,
+    positionX: 85, // Reduced from 92 to prevent off-screen on mobile
   },
 ];
 
