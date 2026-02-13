@@ -73,14 +73,19 @@ export default function GiftBox({ stopX, stopY, onComplete, onVideoEnd, onVideoS
                 </div>
             )}
 
-            {/* Full-screen clickable overlay - click anywhere to trigger video */}
+
+            {/* Clickable gift box area - only at final stop point */}
             {!showVideo && !videoEnded && (
                 <div
-                    className="fixed inset-0 z-40 cursor-pointer"
+                    className="absolute z-40 cursor-pointer"
                     onClick={handleStopClick}
                     style={{
-                        background: 'transparent'
+                        left: stopX - 50,
+                        top: stopY - 100,
+                        width: 200,
+                        height: 150
                     }}
+                    title="Click to open gift"
                 />
             )}
 
