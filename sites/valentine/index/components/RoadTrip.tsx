@@ -172,10 +172,10 @@ const RoadTrip: React.FC = () => {
         {/* Music Control - Only controls audio, not animation */}
         <button
           onClick={() => setIsMusicPlaying(!isMusicPlaying)}
-          className="bg-white/90 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2"
+          className="bg-white/90 px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-1.5"
         >
-          <span className="text-xl">{isMusicPlaying ? '⏸️' : '▶️'}</span>
-          <span className="text-sm font-medium text-gray-700">
+          <span className="text-base">{isMusicPlaying ? '⏸️' : '▶️'}</span>
+          <span className="text-xs font-medium text-gray-700">
             {isMusicPlaying ? 'Music' : 'Music'}
           </span>
         </button>
@@ -183,10 +183,10 @@ const RoadTrip: React.FC = () => {
         {/* Restart Button */}
         <button
           onClick={handleRestart}
-          className="bg-white/90 px-4 py-2 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-2"
+          className="bg-white/90 px-3 py-1.5 rounded-full shadow-lg hover:scale-105 transition flex items-center gap-1.5"
         >
-          <span className="text-xl">🔄</span>
-          <span className="text-sm font-medium text-gray-700">Restart</span>
+          <span className="text-base">🔄</span>
+          <span className="text-xs font-medium text-gray-700">Restart</span>
         </button>
       </div>
 
