@@ -27,7 +27,7 @@ const PasswordGate: React.FC<Props> = ({ onUnlock }) => {
       <div className="absolute bottom-0 w-full h-1/3 bg-green-400 rounded-t-[50%] scale-150 translate-y-10"></div>
 
       <div className="z-10 bg-white/90 backdrop-blur-sm p-8 rounded-3xl shadow-xl max-w-sm w-full text-center border-4 border-pink-400 transform transition-all hover:scale-105">
-        <h1 className="text-4xl fun-font text-pink-600 mb-2">Love Trip 🏍️</h1>
+        <h1 className="text-4xl fun-font text-pink-600 mb-2">Love Road Story 🏍️</h1>
         <p className="text-gray-600 mb-6 font-bold">Ngày mình đi xem phim 🎬</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
