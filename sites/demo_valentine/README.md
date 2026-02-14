@@ -1,12 +1,49 @@
-# Love Trip - Interactive Journey Demo
+# Love Road Story - Interactive Journey Demo 🏍️💖
+# -
+# Love Road Story - Interactive Journey Demo 🏍️💖
 
-**A modern web experience showcasing romantic journey storytelling with React, TypeScript, and Vite.**
+**A modern web experience showcasing romantic journey storytelling with React, TypeScript, and Vite. Built as a Vibe-coding course project.**
 
 ---
 
 ## 🎯 Overview
 
-This is a **demo version** of an interactive love journey web application. All personal information has been removed and replaced with generic placeholder content to showcase the technical implementation and features.
+This is a **demo version** of an interactive love journey web application. It simulates a motorcycle trip through a hilly terrain, passing by milestones that represent key moments in a relationship.
+
+All personal information has been removed and replaced with generic placeholder content to showcase the technical implementation and features.
+
+**Demo:** [Live Site](https://yoloh3.com/sites/demo_valentine/index/dist)  
+**Password:** `9999`
+
+---
+
+## 🛠️ Development Journey (Vibe-coding Workflow)
+
+This project was built in **2 days** using a "Vibe-coding" workflow, leveraging multiple AI tools to accelerate development.
+
+### Phase 1: Brainstorming & Ideation 💡
+- **Tool:** Claude 4.6 (Opus)
+- **Process:** Chatting with Claude to find a concept that fits a "gentle, romantic" vibe.
+- **Input:** "Want to build a web gift for girlfriend, capturing timeline milestones, 2 people on a bike animation." + **PRD template by Nguyen Nhat Quang**.
+- **Output:** Concept of a physics-based motorcycle ride on SVG terrain.
+
+### Phase 2: Rapid Prototyping ⚡
+- **Tool:** Google AI Studio
+- **Process:** Generated the initial frontend boilerplate from the PRD.
+- **Tech Stack:** React + Vite + Tailwind CSS.
+- **Result:** Functional bike animation and basic timeline created in minutes.
+
+### Phase 3: Optimization & Refactoring (Homework #3) 🔧
+- **Tool:** **Antigravity** (IDE Agent) + **AWF Skills**
+- **Process:**
+    - Downloaded codebase from Google AI Studio.
+    - Used **AWF (Antigravity Workflow Framework)** skills like `/brainstorm` to understand and refine the code, used `/debug` to fix issues and interactions...
+    - Refactored components, separated data (`constants.ts`), and polished interactions.
+    - **Models:** Gemini Flash for git ops, Claude Sonnet for coding, Claude Opus for planning.
+
+### Phase 4: Security Check (Homework #2) 🔒
+- **Process:** Implemented a **Password Gate** to protect privacy.
+- **Audit:** Reviewed code to ensure no hardcoded sensitive data before public deployment.
 
 ---
 
@@ -38,7 +75,7 @@ This is a **demo version** of an interactive love journey web application. All p
 - Triggers after closing video
 
 ### 6. **Password Protection**
-- Simple password gate (demo: `demo2024`)
+- Simple password gate (`9999`)
 - Animated error messages
 
 ### 7. **Responsive Design**
@@ -72,20 +109,7 @@ npm run preview
 
 ### Access
 - **Development:** http://localhost:5173
-- **Password:** `demo2024`
-
----
-
-## 🛠️ Tech Stack
-
-| Category       | Technology      | Version  |
-| -------------- | --------------- | -------- |
-| **Framework**  | React           | 19.2.4   |
-| **Language**   | TypeScript      | 5.8.2    |
-| **Build Tool** | Vite            | 6.2.0    |
-| **Styling**    | Tailwind CSS    | (inline) |
-| **Animation**  | canvas-confetti | 1.9.4    |
-| **Deployment** | GitHub Pages    | -        |
+- **Password:** `9999`
 
 ---
 
@@ -131,117 +155,18 @@ if (isVideoPlaying || videoCompleted) {
 - Slows down auto-scroll for better viewing
 - Animates milestone cards
 
-### YouTube Autoplay
-- Uses `mute=1` parameter to bypass browser policy
-- Background music continues during video
-- User can unmute YouTube manually
+---
+
+## Credits
+
+- **Author:** H3 (fb.com/yoloh3) - Contact me if you want to use this demo for real deployment.
+- **Course:** The1light Vibe-coding
+- **PRD Template:** Nguyen Nhat Quang
+- **Tools:** Claude, Google AI Studio, Antigravity, AWF.
+- **Tech Stack:** React, Tailwind, Canvas-confetti.
 
 ---
 
-## 🔧 Configuration
-
-### Milestones
-Edit `constants.ts` to customize:
-- Dates and titles
-- Emoji icons
-- Messages (before/after video)
-- Photo paths
-- Position on road (0-100%)
-
-### Password
-Change in `constants.ts`:
-```typescript
-export const PASSWORD = "your_password";
-```
-
-### YouTube Video
-Update in `GiftBox.tsx`:
-```typescript
-src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1"
-```
-
----
-
-## 📊 Performance
-
-- **Bundle Size:** ~219 KB (gzipped: ~70 KB)
-- **Load Time:** < 2 seconds
-- **Mobile Optimized:** Adaptive quality
-- **No Large Assets:** Placeholder images only
-
----
-
-## 🎯 Use Cases
-
-This demo showcases:
-- ✅ Modern React development with TypeScript
-- ✅ SVG animation and physics simulation
-- ✅ Audio/video integration with browser APIs
-- ✅ State management with React hooks
-- ✅ Responsive design patterns
-- ✅ Third-party library integration (canvas-confetti)
-- ✅ Build optimization with Vite
-
----
-
-## 📝 Notes
-
-### Placeholder Content
-All personal information has been removed:
-- Photos: AI-generated romantic illustrations
-- Audio: Empty placeholder files
-- Video: Generic YouTube demo video
-- Messages: Generic milestone descriptions
-- Password: Changed to `demo2024`
-
-### Original Features Preserved
-- All technical implementations remain intact
-- UI/UX design unchanged
-- Animation and interaction logic preserved
-- Performance optimizations maintained
-
----
-
-## 🚀 Deployment
-
-### GitHub Pages
-```bash
-# Build
-npm run build
-
-# Deploy dist/ folder to GitHub Pages
-# Configure base path in vite.config.ts
-```
-
-### Vite Config
-```typescript
-export default defineConfig({
-  base: '/your-repo-name/',
-  // ...
-})
-```
-
----
-
-## 📄 License
-
-This is a demo project for showcasing technical skills.
-
----
-
-## 🙏 Credits
-
-**Built with:**
-- React + TypeScript + Vite
-- Tailwind CSS
-- canvas-confetti
-- YouTube IFrame API
-
-**Created to demonstrate:**
-Modern web development techniques and interactive storytelling.
-
----
-
-**Demo Password:** `demo2024`
+**Demo Password:** `9999`
 
 **Enjoy the journey! 🏍️💝**
