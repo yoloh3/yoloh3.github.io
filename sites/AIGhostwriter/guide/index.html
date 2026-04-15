@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Build Your Own AI Ghostwriter — Co-create với Claude Code</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hướng dẫn dùng Claude Code làm Co-creator để build 1 Gemini Gem ghostwriter đúng giọng bạn. Quy trình 4 phase, 3-5 sessions.">
+<link rel="canonical" href="https://yoloh3.com/sites/AIGhostwriter/guide/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build Your Own AI Ghostwriter — Co-create với Claude Code">
+<meta property="og:description" content="Hướng dẫn dùng Claude Code làm Co-creator để build 1 Gemini Gem ghostwriter đúng giọng bạn.">
+<meta property="og:url" content="https://yoloh3.com/sites/AIGhostwriter/guide/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build Your Own AI Ghostwriter — Co-create với Claude Code">
+<meta name="twitter:description" content="Hướng dẫn dùng Claude Code làm Co-creator để build 1 Gemini Gem ghostwriter đúng giọng bạn.">
+
+<style>
+  :root {
+    --accent: #c85a54;
+    --text: #222;
+    --muted: #555;
+    --bg: #fdfcfa;
+    --code-bg: #f4f1ec;
+    --border: #e5e0d8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+    margin-top: 2.8rem;
+    margin-bottom: 0.8rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.12rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+    margin-top: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+  p { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--text); }
+  em { color: var(--muted); }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 0.4rem 1rem;
+    margin: 1.2rem 0;
+    color: var(--muted);
+    background: rgba(200, 90, 84, 0.04);
+    font-style: italic;
+  }
+  code {
+    background: var(--code-bg);
+    padding: 0.12em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  pre {
+    background: var(--code-bg);
+    padding: 1rem 1.1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: 0.88em;
+    border: 1px solid var(--border);
+  }
+  pre code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.94em;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--code-bg);
+    font-weight: 600;
+  }
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+  ul, ol { padding-left: 1.5rem; }
+  li { margin-bottom: 0.3rem; }
+  .meta {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 2rem;
+  }
+  .toc {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.4rem;
+    margin: 1.8rem 0 2.5rem;
+    font-size: 0.94rem;
+  }
+  .toc strong { display: block; margin-bottom: 0.4rem; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .toc ol { margin: 0; padding-left: 1.4rem; }
+  .toc li { margin-bottom: 0.2rem; }
+  .footer-note {
+    margin-top: 3rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  .callout {
+    background: rgba(200, 90, 84, 0.06);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1.1rem;
+    border-radius: 4px;
+    margin: 1.2rem 0;
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; padding: 2rem 1.1rem 4rem; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.22rem; }
+    pre { font-size: 0.82em; padding: 0.8rem; }
+    table { font-size: 0.88em; }
+    th, td { padding: 0.4rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Build Your Own AI Ghostwriter — Co-create với Claude Code</h1>
+<p class="meta">Hướng dẫn build Gemini Gem ghostwriter đúng giọng bạn · by <a href="https://yoloh3.com">yoloh3</a></p>
+
+<blockquote>
+Hướng dẫn dùng <strong>Claude Code (hoặc Cursor/Windsurf/coding chatbot khác) làm Co-creator</strong> để build 1 Gemini Gem ghostwriter đúng giọng bạn. Không phải copy 1 template có sẵn — mà học quy trình <strong>interact với AI coding assistant</strong> để iterate ra Gem của riêng mình.
+</blockquote>
+
+<p><strong>Triết lý:</strong> "Người Cộng Sự" — AI không phải tool output 1 chiều, mà là <strong>co-thinker</strong>. Bạn mang domain + giọng văn + judgement. Claude Code mang cấu trúc prompt engineering + kỹ năng debug. Hai bên ping-pong 5-10 vòng → ra Gem chất.</p>
+
+<p><strong>Output cuối:</strong> 1 Gemini Gem của bạn (paid Gemini Advanced) — chạy workflow multi-step, viết đúng giọng bạn, export Substack được.</p>
+
+<div class="toc">
+  <strong>Mục lục</strong>
+  <ol>
+    <li><a href="#s1">Tại sao co-create, không chỉ paste template?</a></li>
+    <li><a href="#s2">Prerequisites</a></li>
+    <li><a href="#s3">Mental model — cách interact với Claude Code</a></li>
+    <li><a href="#s4">4-Phase build process</a></li>
+    <li><a href="#s5">Ví dụ prompts hay cho Claude Code</a></li>
+    <li><a href="#s6">Common pitfalls</a></li>
+    <li><a href="#s7">Iteration roadmap sau v1</a></li>
+    <li><a href="#s8">Next steps</a></li>
+  </ol>
+</div>
+
+<hr>
+
+<h2 id="s1">1. Tại sao co-create, không chỉ paste template?</h2>
+
+<p>Paste 1 prompt v0.5 của người khác cho bạn 1 Gem <strong>"chạy được"</strong>. Co-create với Claude Code cho bạn:</p>
+
+<ol>
+  <li><strong>Gem fit giọng + niche của bạn</strong> — không phải fork H3's DNA.</li>
+  <li><strong>Bạn hiểu từng dòng prompt</strong> — khi fail, bạn biết fix chỗ nào.</li>
+  <li><strong>Iteration skill</strong> — lần sau build tool AI khác (sales bot, study coach, research agent) bạn biết pattern.</li>
+  <li><strong>Guardrails đúng với risk bạn care</strong> — H3 cấm em-dash, bạn có thể cấm thứ khác.</li>
+</ol>
+
+<p>Nếu bạn chỉ cần Gem chạy nhanh → fork thẳng v0.5 của H3 (folder <code>gemprompt/ghostwriter_v0.5/</code>). Nếu muốn <strong>Gem của bạn</strong> — đọc tiếp.</p>
+
+<hr>
+
+<h2 id="s2">2. Prerequisites</h2>
+
+<ul>
+  <li><strong>Claude Code</strong> (hoặc Cursor / Windsurf / Claude web Projects / ChatGPT Pro Canvas) — làm Co-creator. File này ví dụ theo Claude Code (CLI).</li>
+  <li><strong>Google AI Pro</strong> (Gemini Advanced) — để build Gem; Gem builder chỉ mở cho paid tier.</li>
+  <li><strong>1 folder local</strong> trên máy để Claude Code work: ví dụ <code>~/my_ghostwriter/</code>.</li>
+  <li><strong>3-5 sample văn của bạn</strong> — bài Substack cũ, FB post dài, email personal dài, journal. Format <code>.md</code> hoặc <code>.txt</code>.</li>
+  <li><strong>1 reference</strong> — folder <code>ghostwriter_v0.5/</code> của H3 làm starting template (optional nhưng recommend).</li>
+  <li><strong>2-3 sessions × 45 phút</strong> — build 1 phát không ra hàng. Chia sessions.</li>
+</ul>
+
+<hr>
+
+<h2 id="s3">3. Mental model — cách interact với Claude Code</h2>
+
+<p>Trước khi bắt đầu, nội hoá 4 nguyên tắc:</p>
+
+<h3>3.1 Bạn dẫn — Claude Code phục vụ</h3>
+
+<p>Claude Code không đọc được ý bạn. Mỗi request nên có 3 thành phần:</p>
+
+<ul>
+  <li><strong>Goal</strong> — "Tôi muốn X"</li>
+  <li><strong>Context</strong> — "Background: Y, Z"</li>
+  <li><strong>Constraint</strong> — "Không được W, phải giữ V"</li>
+</ul>
+
+<p>Ví dụ tệ: <em>"Viết prompt cho Gem ghostwriter"</em><br>
+Ví dụ tốt: <em>"Viết system prompt cho Gemini Gem. Goal: coach người bận 40+ viết bài Substack 500 chữ. Constraint: không invent trải nghiệm user, luôn tiếng Việt có dấu, workflow phải có WAIT sau mỗi step để user reply."</em></p>
+
+<h3>3.2 Iterate qua test thực</h3>
+
+<p>Đừng tin prompt Claude Code viết lần đầu. Flow đúng:</p>
+
+<pre><code>Claude Code draft prompt → bạn paste vào Gem → chạy thật 1 bài →
+gặp fail → report fail cho Claude Code → Claude Code fix → lặp lại</code></pre>
+
+<p>H3 đã chạy vòng này 5 lần (v0.1 → v0.5). Bạn sẽ chạy 3-5 vòng tối thiểu.</p>
+
+<h3>3.3 Fail là signal, không phải rác</h3>
+
+<p>Mỗi lần Gem sai, bạn có <strong>1 data point thật</strong> về giới hạn của prompt. Ghi lại chính xác:</p>
+
+<ul>
+  <li>Step nào Gem sai</li>
+  <li>Gem làm gì (paste output)</li>
+  <li>Expected là gì</li>
+  <li>Hypothesis nguyên nhân</li>
+</ul>
+
+<p>Feed nguyên block này cho Claude Code — nó debug tốt hơn hẳn lời kể mơ hồ.</p>
+
+<h3>3.4 Offload sang Knowledge files khi prompt quá dài</h3>
+
+<p>Gemini Gem có hard limit system prompt ~4000 chars. Quá thì cắt rules → đưa sang file <code>.md</code> trong Knowledge. Claude Code sẽ gợi ý chỗ nào nên tách — nếu không, bạn chủ động ask: <em>"Phần này dài quá, tách sang knowledge file nào?"</em></p>
+
+<hr>
+
+<h2 id="s4">4. 4-Phase build process</h2>
+
+<p>Làm theo thứ tự. Mỗi phase end bằng 1 artifact concrete trước khi sang phase sau.</p>
+
+<h3>Phase 1 — Scope + Skeleton (session 1, ~45 phút)</h3>
+
+<p><strong>Goal của phase:</strong> ra được 1 <strong>skeleton system prompt</strong> cho Gem + danh sách Knowledge files cần tạo.</p>
+
+<p><strong>Cách interact với Claude Code:</strong></p>
+
+<ol>
+  <li>Mở Claude Code ở folder <code>~/my_ghostwriter/</code>.</li>
+  <li>Prompt mở đầu (customize theo bạn):</li>
+</ol>
+
+<pre><code>Tôi muốn build 1 Gemini Gem ghostwriter cho [mô tả target audience
+của bạn, ví dụ: "người Việt 35-50 tuổi bận rộn muốn viết Substack
+tiếng Việt"]. Pain points chính tôi muốn giải quyết:
+1. [pain 1]
+2. [pain 2]
+3. [pain 3]
+
+Output của Gem: 1 bài blog [độ dài, format].
+
+Reference: H3 đã build v0.5 ở folder `[path tới ghostwriter_v0.5]`.
+Đọc folder đó hiểu approach, rồi propose skeleton cho Gem của tôi.
+Đừng copy nguyên — scope lại cho use case của tôi.</code></pre>
+
+<ol start="3">
+  <li>Claude Code sẽ propose:
+    <ul>
+      <li>Workflow N steps (có thể 6-10)</li>
+      <li>List Knowledge files</li>
+      <li>System prompt skeleton</li>
+    </ul>
+  </li>
+  <li>Review + push back. Câu hỏi tốt:
+    <ul>
+      <li><em>"Step X có thật sự cần không? Tôi không care pain đó."</em></li>
+      <li><em>"Workflow này dài quá với user Fast mode — merge step Y+Z được không?"</em></li>
+      <li><em>"Persona chỗ này quá formal, tôi muốn tone [conversational / thâm trầm / hài]"</em></li>
+    </ul>
+  </li>
+  <li>Chốt skeleton version v0.1 của BẠN. Lưu vào <code>system_prompt_v0.1.md</code> trong folder.</li>
+</ol>
+
+<p><strong>Exit criteria phase 1:</strong> có <code>system_prompt_v0.1.md</code> + danh sách 5-8 Knowledge files (chưa cần content, chỉ cần tên + chức năng).</p>
+
+<h3>Phase 2 — Knowledge files content (session 2, ~60 phút)</h3>
+
+<p><strong>Goal:</strong> mỗi Knowledge file có content concrete đủ cho Gem consult.</p>
+
+<p><strong>Pattern interact:</strong></p>
+
+<p>Làm từng file một. Với mỗi file:</p>
+
+<ol>
+  <li>Prompt:</li>
+</ol>
+
+<pre><code>Viết content cho file `tone_rules.md`. Chức năng: liệt kê từ/cụm
+cấm + voice rules cho Gem. Context: tôi muốn giọng [description],
+không muốn [anti-patterns]. Format: mỗi rule 1 dòng, có ví dụ
+tốt/xấu khi cần. Tham khảo file `tone_rules.md` của H3 (ở
+ghostwriter_v0.5/) nhưng adapt cho giọng tôi.</code></pre>
+
+<ol start="2">
+  <li>Claude Code draft file → bạn review → fix.</li>
+  <li>Điểm cần check mỗi file:
+    <ul>
+      <li>Có <strong>ví dụ cụ thể</strong> không? (rule trừu tượng → Gem bịa)</li>
+      <li>Có <strong>counter-example</strong> không? (chỉ nói "đừng X" yếu hơn "đừng X, thay bằng Y")</li>
+      <li>File có dưới ~2000 chars không? (dài quá Gem skip)</li>
+    </ul>
+  </li>
+  <li>Lặp cho các file còn lại. Priority order:
+    <ul>
+      <li><code>tone_rules.md</code> — quan trọng nhất (guardrail giọng)</li>
+      <li><code>few_shot_good.md</code> — 2-3 sample giọng bạn (paste từ bài cũ)</li>
+      <li><code>few_shot_bad.md</code> — sample AI-slop bạn muốn tránh (Claude Code tự sinh được)</li>
+      <li><code>framework.md</code> — outline framework (Hook-Insight-Example-CTA hoặc custom)</li>
+      <li><code>tone_guide.md</code> — hướng dẫn Step tone extraction (xem Phase 3)</li>
+      <li><code>export_reminders.md</code> — disclaimers cuối bài</li>
+      <li><code>platform_tips.md</code> — tips publish (Substack/FB/Medium)</li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>Exit criteria phase 2:</strong> có folder <code>my_knowledge/</code> với 5-8 file <code>.md</code>, mỗi file &lt;2000 chars, content concrete.</p>
+
+<h3>Phase 3 — Tone anchor (session 3, ~45 phút)</h3>
+
+<p><strong>Goal:</strong> Gem viết ra <strong>giọng bạn</strong>, không giọng AI generic.</p>
+
+<p>Đây là phase <strong>fail nhất</strong>. 3 options từ dễ → mạnh:</p>
+
+<table>
+  <thead>
+    <tr><th>Option</th><th>Effort</th><th>Reusable?</th><th>Độ match</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>A. Sample paste</strong></td><td>5 phút/session</td><td>Không</td><td>60-70%</td></tr>
+    <tr><td><strong>B. Tone extractor prompt</strong> ⭐</td><td>15 phút × 1 lần</td><td>Có</td><td>85-90%</td></tr>
+    <tr><td><strong>C. Few-shot heavy</strong></td><td>1-2 giờ setup</td><td>Có</td><td>90-95%</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Recommend Option B</strong> lần đầu. Cách co-create với Claude Code:</p>
+
+<ol>
+  <li>Prompt:</li>
+</ol>
+
+<pre><code>Tôi muốn build 1 "tone extractor prompt" — 1 prompt bằng tiếng Anh
+mà user chạy ở 1 chatbot phụ (ChatGPT/Claude web) với sample văn
+của họ, output ra TONE PROFILE structured. Sau đó paste TONE
+PROFILE vào Gem để calibrate voice.
+
+Tham khảo `tone_guide.md` của H3 ở ghostwriter_v0.5/. Adapt cho
+use case của tôi. Yêu cầu:
+1. Prompt phải chạy được trên ChatGPT free / Claude web free
+2. Output TONE PROFILE structured theo [N] dimensions tôi care nhất
+3. Mỗi dimension phải có evidence quote lấy từ sample user upload
+4. Có fallback [NEED MORE DATA] nếu sample không đủ
+
+Propose N dimensions nào fit use case của tôi nhất, không cần giữ
+nguyên 7 dim của H3.</code></pre>
+
+<ol start="2">
+  <li>Claude Code draft prompt. Bạn test thực: chạy nó ở ChatGPT với 3-5 sample bạn. Xem output.</li>
+  <li>Report lại Claude Code:
+    <ul>
+      <li>Dim nào output yếu / generic</li>
+      <li>Dim nào bị hallucinate</li>
+      <li>Format có dễ paste lại Gem không</li>
+    </ul>
+  </li>
+  <li>Iterate 2-3 vòng cho đến khi output chất.</li>
+  <li>Embed prompt final vào file <code>tone_guide.md</code> (section "prompt cho user copy").</li>
+</ol>
+
+<div class="callout">
+<strong>Lưu ý:</strong> Bạn tự chọn bao nhiêu dimensions. Ít quá (2-3) thì profile mỏng. Nhiều quá (8+) thì user mệt. Sweet spot 5-7.
+</div>
+
+<p><strong>Exit criteria phase 3:</strong> <code>tone_guide.md</code> có tone extractor prompt test được.</p>
+
+<h3>Phase 4 — Smoke test + iteration (session 4, ~60 phút)</h3>
+
+<p><strong>Goal:</strong> Gem chạy end-to-end 1 bài thật mà không cần intervene.</p>
+
+<p><strong>Setup Gem:</strong></p>
+
+<ol>
+  <li>Mở <a href="https://gemini.google.com/gems/create">gemini.google.com/gems/create</a>.</li>
+  <li>New Gem → Name + Description (ask Claude Code draft giùm nếu muốn).</li>
+  <li>Paste system prompt v0.1 của bạn vào Instructions.</li>
+  <li>Upload folder <code>my_knowledge/</code> lên Google Drive → link vào Gem Knowledge.</li>
+  <li>Save.</li>
+</ol>
+
+<p><strong>Smoke test scripts</strong> (ask Claude Code draft 4-5 test case trước đó):</p>
+
+<ul>
+  <li>Test 1: chạy Fast mode với idea đơn giản → Expected [...]</li>
+  <li>Test 2: chạy Hard mode với idea cảm xúc → Expected [...]</li>
+  <li>Test 3: Gem có tôn trọng WAIT không?</li>
+  <li>Test 4: Gem có dùng từ cấm không?</li>
+  <li>Test 5: Export cuối có đủ disclaimers không?</li>
+</ul>
+
+<p><strong>Debug loop với Claude Code:</strong></p>
+
+<p>Mỗi test fail, quay lại Claude Code:</p>
+
+<pre><code>Test [N] fail.
+Paste lại full conversation với Gem:
+[paste]
+
+Expected: [...]
+Actual: [...]
+
+Hypothesis của tôi: [nếu có]
+
+Fix prompt hay fix knowledge file?</code></pre>
+
+<p>Claude Code debug → propose fix (có thể edit system prompt hoặc Knowledge file cụ thể) → bạn apply → test lại.</p>
+
+<p><strong>Version bump:</strong> mỗi lần fix xong 1 batch, đổi <code>v0.1 → v0.2</code>, keep v0.1 backup.</p>
+
+<p><strong>Exit criteria phase 4:</strong> 5 test pass liên tiếp → Gem v1 ready cho bài thật.</p>
+
+<hr>
+
+<h2 id="s5">5. Ví dụ prompts hay cho Claude Code</h2>
+
+<p>Copy + paste, thay phần <code>[...]</code>:</p>
+
+<p><strong>Start fresh:</strong></p>
+<pre><code>Đọc folder `[path tới ghostwriter_v0.5]` hiểu approach H3 đã dùng.
+Sau đó đừng hỏi gì, hỏi tôi 5 câu quan trọng nhất để scope Gem
+cho use case của tôi.</code></pre>
+
+<p><strong>Debug fail cụ thể:</strong></p>
+<pre><code>Gem v0.2 của tôi fail ở Step 4. Paste conversation:
+[...]
+Expected: [...]
+Actual: [...]
+Hypothesis 3 nguyên nhân ranked likelihood. Đừng fix vội, diagnose
+trước.</code></pre>
+
+<p><strong>Review Knowledge file:</strong></p>
+<pre><code>Đọc `my_knowledge/tone_rules.md`. Tìm 3 weakness: rule trừu tượng,
+thiếu ví dụ, redundancy với system prompt. Suggest fix inline.</code></pre>
+
+<p><strong>Merge/split decision:</strong></p>
+<pre><code>System prompt v0.3 đang 4800 chars — vượt limit. Đọc prompt, đề
+xuất phần nào tách sang knowledge file và phần nào keep inline.
+Criteria: Gem phải đọc mỗi turn → keep inline. Consult theo step
+→ tách ra.</code></pre>
+
+<p><strong>Tune sau feedback beta:</strong></p>
+<pre><code>5 beta tester feedback:
+1. [...]
+2. [...]
+...
+Gom cluster root cause. Rank fix theo impact × effort. Đừng fix
+từng cái riêng — fix root cause.</code></pre>
+
+<hr>
+
+<h2 id="s6">6. Common pitfalls</h2>
+
+<table>
+  <thead>
+    <tr><th>Pitfall</th><th>Triệu chứng</th><th>Fix</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Over-engineering phase 1</strong></td>
+      <td>Skeleton 12 steps, prompt 6000 chars</td>
+      <td>Scope lại: MVP = 6 steps. Cut phase 2/3 features trước khi test baseline.</td>
+    </tr>
+    <tr>
+      <td><strong>Prompt trừu tượng</strong></td>
+      <td>Gem skip rule, output generic</td>
+      <td>Thêm ví dụ cụ thể + counter-example. "Đừng dùng em-dash (—)" &lt; "Đừng dùng —, thay bằng phẩy hoặc chấm. Ví dụ: 'X — Y' → 'X, Y'."</td>
+    </tr>
+    <tr>
+      <td><strong>Bỏ qua Knowledge files</strong></td>
+      <td>System prompt dồn hết rules → vượt limit</td>
+      <td>Split từ đầu: system prompt = workflow + guardrails; Knowledge = reference data.</td>
+    </tr>
+    <tr>
+      <td><strong>Tune giữa lúc viết bài thật</strong></td>
+      <td>Mất focus cả 2 bên</td>
+      <td>Tune ở session riêng. Viết bài thật = freeze version.</td>
+    </tr>
+    <tr>
+      <td><strong>Test quá ít</strong></td>
+      <td>Gem fail bất ngờ trên user beta</td>
+      <td>Min 5 test case × 2 modes trước release.</td>
+    </tr>
+    <tr>
+      <td><strong>Không version control</strong></td>
+      <td>Mất version tốt sau khi fix 1 cái lại break cái khác</td>
+      <td>Mỗi batch fix = version bump. Backup folder theo version. Git tốt hơn.</td>
+    </tr>
+    <tr>
+      <td><strong>Paste fail không đủ context</strong></td>
+      <td>Claude Code propose fix sai</td>
+      <td>Luôn paste <strong>full conversation</strong> + expected vs actual, không chỉ "Gem sai".</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 id="s7">7. Iteration roadmap sau v1</h2>
+
+<p>Sau khi Gem v1 chạy ổn, 3 hướng tune:</p>
+
+<p><strong>Short loop (mỗi bài):</strong> note 1-2 điểm fail → fix next session.</p>
+
+<p><strong>Medium loop (mỗi 5-10 bài):</strong> cluster fail theo root cause → version bump (v1.1, v1.2).</p>
+
+<p><strong>Long loop (mỗi 30-50 bài):</strong> rethink architecture. Có thể merge/split step, thay framework outline, đổi mode structure. Đây là lúc v0.5 → v0.6 của H3 — full redesign.</p>
+
+<p>Mỗi loop đều interact với Claude Code: bạn mang data, nó mang structure.</p>
+
+<hr>
+
+<h2 id="s8">8. Next steps</h2>
+
+<ul>
+  <li>[ ] Hoàn tất prerequisites (Section 2)</li>
+  <li>[ ] Session 1 — Phase 1 Skeleton với Claude Code</li>
+  <li>[ ] Session 2 — Phase 2 Knowledge files</li>
+  <li>[ ] Session 3 — Phase 3 Tone anchor</li>
+  <li>[ ] Session 4 — Phase 4 Smoke test + 5 test case</li>
+  <li>[ ] Viết bài thật đầu tiên với Gem v1 của bạn</li>
+  <li>[ ] Note fail → session 5 iterate</li>
+</ul>
+
+<p>Stuck chỗ nào, ping group AIMM kèm paste conversation với Claude Code. Debug bằng context thật hiệu quả hơn hỏi chung.</p>
+
+<hr>
+
+<h2>Reference</h2>
+
+<ul>
+  <li><strong>AI Ghostwriter Gem (H3's v0.5):</strong> <a href="https://yoloh3.com/sites/AIGhostwriter/">yoloh3.com/sites/AIGhostwriter</a> — redirect thẳng tới Gem trên Gemini.</li>
+  <li><strong>Tone extractor prompt (H3's):</strong> <a href="https://yoloh3.com/sites/AIGhostwriter/tone_extractor_prompt.txt">tone_extractor_prompt.txt</a></li>
+  <li><strong>Philosophy "Người Cộng Sự":</strong> AI co-thinker — bạn mang substance, AI mang structure.</li>
+</ul>
+
+<div class="footer-note">
+  © yoloh3 · <a href="https://yoloh3.com">yoloh3.com</a> · Share freely với credit.
+</div>
+
+</body>
+</html>
