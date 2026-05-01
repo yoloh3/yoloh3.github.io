@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Dùng chính AI để dạy mình về AI · yoloh3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Tutorial mình hứa với anh Lã Chí Dũng — dùng chính AI để dạy mình về AI, mindset trước toolset sau.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5efe6">
+<link rel="canonical" href="https://yoloh3.com/sites/SecondBrain/01_learnAI/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dùng chính AI để dạy mình về AI">
+<meta property="og:description" content="Tutorial mình hứa với anh Lã Chí Dũng. Mindset trước, toolset sau.">
+<meta property="og:url" content="https://yoloh3.com/sites/SecondBrain/01_learnAI/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dùng chính AI để dạy mình về AI">
+<meta name="twitter:description" content="Mindset trước, toolset sau. Chia sẻ ánh sáng, không gửi đèn pin.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,30..100;1,9..144,300..900,30..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Earth-warm base — H3_Image_Tone primary + neutral */
+    --paper: #f5efe6;
+    --paper-soft: #faf5eb;
+    --paper-deep: #ede4d2;
+    --ink: #2d2a26;
+    --ink-soft: #4a3a2a;
+    --ink-warm: #6b4f3a;
+    --ink-muted: #8b7656;
+
+    /* Writing accent (sage + gold) */
+    --sage: #8b9d83;
+    --sage-deep: #5b7553;
+    --sage-soft: #d6dccf;
+    --gold: #d4a843;
+    --gold-soft: #ecd9a3;
+    --ochre: #d4b896;
+    --warm-brown: #a67b5b;
+
+    /* Blueprint accent (technical zones) — Semiconductor-AI palette */
+    --blueprint: #3d4f5f;
+    --blueprint-deep: #2a3845;
+    --blueprint-soft: #c5d0d8;
+    --blueprint-tint: #ebeff2;
+    --tech-grey: #7a8b8b;
+
+    /* Structural */
+    --border: #d6c8a8;
+    --border-soft: #e6dcc4;
+    --border-blueprint: #a8b8c2;
+    --shadow: 0 1px 0 rgba(45, 42, 38, 0.04), 0 8px 28px -16px rgba(45, 42, 38, 0.12);
+    --shadow-card: 0 1px 2px rgba(45, 42, 38, 0.04);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    font-feature-settings: "kern", "liga", "onum";
+    overflow-x: hidden;
+  }
+  /* Subtle paper grain — H3_Image_Tone hand-rendered feel */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+  }
+  /* Soft warm wash background gradient */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(ellipse 70% 50% at 100% 0%, rgba(212, 168, 67, 0.10), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(139, 157, 131, 0.10), transparent 60%);
+  }
+
+  /* ========== TOP NAV — paper notebook ribbon ========== */
+  nav.topnav {
+    position: relative;
+    z-index: 5;
+    border-bottom: 1px solid var(--border-soft);
+    background: var(--paper);
+  }
+  .topnav-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1.1rem 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.4rem;
+  }
+  .topnav a.back {
+    color: var(--ink-warm);
+    text-decoration: none;
+    background-image: none;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.96rem;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s ease;
+  }
+  .topnav a.back:hover { color: var(--warm-brown); background-image: none; }
+  .topnav a.back svg { transition: transform 0.2s ease; }
+  .topnav a.back:hover svg { transform: translateX(-3px); }
+  .topnav .schema-path {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--blueprint);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .topnav .schema-path .seg { padding: 0.18rem 0.5rem; border: 1px solid var(--border-blueprint); border-radius: 2px; background: var(--blueprint-tint); color: var(--blueprint); text-decoration: none; background-image: none; transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+  .topnav .schema-path a.seg:hover { background-color: var(--blueprint); color: var(--paper-soft); border-color: var(--blueprint); background-image: none; }
+  .topnav .schema-path .seg.active { background: var(--blueprint); color: var(--paper-soft); border-color: var(--blueprint); }
+  .topnav .schema-path .arrow { color: var(--tech-grey); }
+
+  /* ========== HERO ========== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 5.5rem 1.8rem 3rem;
+  }
+  /* Engineer notebook annotation marks behind hero */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 6rem; right: 2rem;
+    width: 90px; height: 90px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%233d4f5f' stroke-width='0.5' opacity='0.35'%3E%3Ccircle cx='50' cy='50' r='30'/%3E%3Ccircle cx='50' cy='50' r='42'/%3E%3Cpath d='M8 50 L92 50 M50 8 L50 92'/%3E%3Ctext x='52' y='14' font-family='monospace' font-size='5' fill='%233d4f5f'%3E0,0%3C/text%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blueprint);
+    margin-bottom: 2.2rem;
+    padding: 0.32rem 0.8rem;
+    border: 1px solid var(--border-blueprint);
+    border-radius: 2px;
+    background: var(--blueprint-tint);
+  }
+  .hero-eyebrow svg { width: 12px; height: 12px; color: var(--gold); }
+
+  h1.hero-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0 0 1.6rem;
+    max-width: 16ch;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    position: relative;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--warm-brown);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    position: relative;
+    display: inline-block;
+  }
+  /* Hand-drawn underline beneath accent word */
+  h1.hero-title em::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -0.16em;
+    width: 100%; height: 0.18em;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 12' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M2 6 Q40 2 80 5 T160 6 T198 5' fill='none' stroke='%23d4a843' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .hero-deck {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 350;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin: 0 0 2.4rem;
+    max-width: 30ch;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    align-items: center;
+  }
+  .hero-meta .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.36rem 0.78rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-warm);
+    background: var(--paper-soft);
+  }
+  .hero-meta .chip svg { width: 11px; height: 11px; color: var(--sage-deep); }
+  .hero-meta .chip.tech { background: var(--blueprint-tint); border-color: var(--border-blueprint); color: var(--blueprint); }
+
+  /* ========== ARTICLE BODY ========== */
+  article {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.8rem 5rem;
+  }
+
+  /* Section heading composition */
+  .section {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 1.6rem;
+    align-items: start;
+    margin: 4.5rem 0 1.6rem;
+    scroll-margin-top: 2rem;
+  }
+  .section:first-of-type { margin-top: 0; }
+  .section-marker {
+    padding-top: 0.5rem;
+  }
+  .section-marker .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--blueprint);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .section-marker .schema {
+    width: 60px;
+    height: 12px;
+    color: var(--blueprint-soft);
+    display: block;
+  }
+  .section-marker .schema svg { width: 100%; height: 100%; }
+  h2.section-title, h1.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+    line-height: 1.12;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin: 0;
+    font-variation-settings: "opsz" 120, "SOFT" 50;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--warm-brown);
+    font-variation-settings: "opsz" 120, "SOFT" 100;
+    font-weight: 400;
+  }
+
+  .body-content {
+    grid-column: 2;
+    max-width: 700px;
+  }
+  .body-content > p {
+    margin: 0 0 1.3rem;
+    color: var(--ink-soft);
+  }
+  .body-content > p:first-child { margin-top: 0.6rem; }
+  .body-content strong { color: var(--ink); font-weight: 600; }
+  .body-content em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-warm);
+    font-variation-settings: "opsz" 24, "SOFT" 100;
+  }
+
+  /* Drop cap on first paragraph after section */
+  .body-content > p.dropcap::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 4.4rem;
+    line-height: 0.88;
+    float: left;
+    margin: 0.36rem 0.7rem -0.05rem 0;
+    color: var(--warm-brown);
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    letter-spacing: -0.02em;
+  }
+
+  /* Inline links — sage underline w/ gold hover */
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--sage), var(--sage));
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 1.05em;
+    transition: background-size 0.25s ease, color 0.2s ease;
+  }
+  a:hover {
+    color: var(--warm-brown);
+    background-image: linear-gradient(var(--gold-soft), var(--gold-soft));
+    background-size: 100% 5px;
+  }
+
+  /* Code — blueprint-tinted */
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.84em;
+    background: var(--blueprint-tint);
+    color: var(--blueprint);
+    padding: 0.14em 0.42em;
+    border-radius: 2px;
+    border: 1px solid var(--border-blueprint);
+  }
+
+  /* Collegial quote (anh Dũng Lã type) */
+  blockquote.collegial {
+    margin: 1.4rem 0;
+    padding: 1rem 1.2rem;
+    background: var(--paper-soft);
+    border-left: 2px solid var(--sage);
+    border-radius: 1px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  blockquote.collegial em { color: var(--ink); }
+  blockquote.collegial::before {
+    content: "❝";
+    position: absolute;
+    top: -0.2rem;
+    left: 0.4rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--sage-deep);
+    opacity: 0.5;
+  }
+
+  /* Feature quote — centered emphasis */
+  blockquote.feature {
+    margin: 2.4rem 0;
+    padding: 1.8rem 1.4rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--paper-soft) 0%, var(--paper-deep) 100%);
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+    font-weight: 350;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  blockquote.feature strong { color: var(--warm-brown); font-weight: 500; font-style: normal; }
+  blockquote.feature em { font-style: italic; color: var(--ink-warm); }
+
+  /* Alert — Quá tải — engineer "warning" tag */
+  blockquote.alert {
+    margin: 2rem 0;
+    padding: 1.6rem;
+    text-align: center;
+    background: var(--blueprint);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+    position: relative;
+  }
+  blockquote.alert::before {
+    content: "// alert";
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  blockquote.alert em { color: var(--gold); font-style: normal; }
+
+  /* Takeaway — large, navy on cream */
+  blockquote.takeaway {
+    margin: 3rem 0 1.6rem;
+    padding: 2.6rem 1.6rem;
+    text-align: center;
+    background: var(--paper-soft);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  blockquote.takeaway::before, blockquote.takeaway::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gold);
+    opacity: 0.5;
+  }
+  blockquote.takeaway::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+  blockquote.takeaway::after { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+  blockquote.takeaway strong {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+    color: var(--ink);
+    letter-spacing: -0.018em;
+    line-height: 1.18;
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    display: block;
+  }
+  blockquote.takeaway strong span.swap { color: var(--warm-brown); font-style: normal; font-variation-settings: "opsz" 144, "SOFT" 50; }
+
+  /* Lists */
+  ul, ol { padding-left: 1.4rem; margin: 0 0 1.3rem; }
+  ul li, ol li { color: var(--ink-soft); margin-bottom: 0.4rem; }
+  ul li::marker, ol li::marker { color: var(--warm-brown); }
+
+  /* Pain list — hand-drawn lowercase roman style */
+  ul.pain-list {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: pain;
+    margin: 1.2rem 0;
+  }
+  ul.pain-list li {
+    counter-increment: pain;
+    padding: 0.9rem 1.1rem 0.9rem 2.8rem;
+    margin-bottom: 0.5rem;
+    background: var(--paper-soft);
+    border: 1px solid var(--border-soft);
+    border-left: 2px solid var(--sage);
+    border-radius: 1px;
+    position: relative;
+    color: var(--ink-soft);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  ul.pain-list li::before {
+    content: counter(pain, lower-roman) ".";
+    position: absolute;
+    left: 0.95rem;
+    top: 0.95rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.94rem;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  ul.pain-list li:hover { border-left-color: var(--warm-brown); transform: translateX(3px); }
+
+  /* Step list — engineer notebook checklist */
+  ol.steps {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step;
+    margin: 1.6rem 0;
+    display: grid;
+    gap: 0.7rem;
+  }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 1.1rem 1.2rem 1.1rem 4.2rem;
+    background: var(--paper-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 2px;
+    transition: border-color 0.2s ease;
+  }
+  ol.steps > li:hover { border-color: var(--warm-brown); }
+  ol.steps > li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0.9rem;
+    top: 1.05rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blueprint);
+    color: var(--paper-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.78rem;
+    border-radius: 1px;
+  }
+  ol.steps > li strong {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.04rem;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+    font-variation-settings: "opsz" 36, "SOFT" 50;
+  }
+  ol.steps > li > p { margin: 0; font-size: 0.96rem; }
+
+  /* Note callout — engineer's margin annotation */
+  .note {
+    margin: 1.4rem 0;
+    padding: 1rem 1.2rem 1rem 3rem;
+    background: var(--paper-soft);
+    border: 1px dashed var(--sage);
+    border-radius: 1px;
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .note::before {
+    content: "";
+    position: absolute;
+    left: 0.9rem;
+    top: 1.05rem;
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%238b9d83' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12 L8 12 L10 8 L14 16 L16 12 L22 12'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .note .label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sage-deep);
+    margin-bottom: 0.32rem;
+    font-weight: 500;
+  }
+
+  /* ========== PHASE BLOCK — BLUEPRINT TECHNICAL ZONE ========== */
+  .phase-block {
+    margin: 1.6rem 0 2.2rem;
+    padding: 1.6rem 1.4rem;
+    background: var(--blueprint-tint);
+    border: 1px solid var(--border-blueprint);
+    border-radius: 2px;
+    position: relative;
+    background-image:
+      linear-gradient(var(--paper-soft) 0%, var(--blueprint-tint) 100%),
+      linear-gradient(rgba(61, 79, 95, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61, 79, 95, 0.05) 1px, transparent 1px);
+    background-size: 100% 100%, 22px 22px, 22px 22px;
+    background-blend-mode: normal, multiply, multiply;
+  }
+  .phase-block::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: 1.2rem;
+    width: 30px; height: 8px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--blueprint);
+  }
+  h3.phase-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.36rem;
+    color: var(--blueprint-deep);
+    margin: 0 0 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-variation-settings: "opsz" 60, "SOFT" 50;
+    letter-spacing: -0.01em;
+  }
+  .phase-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--blueprint);
+    color: var(--paper-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 500;
+    border-radius: 1px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .phase-capability {
+    margin: 0.8rem 0 1.2rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--paper-soft);
+    border-left: 2px solid var(--gold);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+    font-variation-settings: "opsz" 36, "SOFT" 100;
+  }
+  .phase-block p { color: var(--ink-soft); }
+  .phase-block .phase-resources {
+    font-size: 0.92rem;
+    color: var(--ink-warm);
+    border-top: 1px dashed var(--border-blueprint);
+    padding-top: 0.85rem;
+    margin-top: 1.1rem;
+  }
+  .phase-block .phase-resources .label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--blueprint);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  /* Tables — blueprint schematic */
+  .table-wrap {
+    margin: 1.4rem 0;
+    border: 1px solid var(--border-blueprint);
+    border-radius: 1px;
+    overflow: hidden;
+    background: var(--paper-soft);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+  th, td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  th {
+    background: var(--blueprint-tint);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--blueprint);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-blueprint);
+  }
+  td strong { color: var(--blueprint-deep); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--blueprint-tint); }
+
+  /* ========== POSTSCRIPT — paper-fold dark warm ========== */
+  .postscript {
+    margin: 3.5rem 0 0;
+    padding: 1.8rem 1.6rem;
+    background: linear-gradient(135deg, #2d2418 0%, #3a2e1f 100%);
+    color: var(--ochre);
+    border-radius: 2px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    line-height: 1.62;
+    position: relative;
+    overflow: hidden;
+  }
+  .postscript::before {
+    content: "Tái bút";
+    position: absolute;
+    top: 0.7rem;
+    right: 1.2rem;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.86rem;
+    letter-spacing: 0.04em;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  .postscript::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 100% 0%, rgba(212, 168, 67, 0.12), transparent 50%);
+    pointer-events: none;
+  }
+  .postscript p { margin: 0; position: relative; z-index: 1; color: var(--paper); }
+  .postscript strong { color: var(--gold); font-style: normal; font-weight: 500; }
+
+  /* ========== DIVIDER — schematic ornament ========== */
+  .divider {
+    margin: 3.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blueprint-soft);
+  }
+  .divider svg { width: 100px; height: 14px; }
+
+  /* ========== FOOTER ========== */
+  footer.page-footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border-soft);
+    background: var(--paper-deep);
+    padding: 2.6rem 1.8rem 3rem;
+    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  footer.page-footer .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--ink);
+    background: var(--paper-soft);
+    border: 1px solid var(--border);
+    padding: 0.55rem 1.1rem;
+    border-radius: 2px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.96rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    background-image: none;
+    font-variation-settings: "opsz" 60, "SOFT" 100;
+  }
+  footer.page-footer .breadcrumb:hover { border-color: var(--warm-brown); transform: translateX(-3px); color: var(--warm-brown); }
+  footer.page-footer .breadcrumb svg { width: 14px; height: 14px; }
+  footer.page-footer .copy {
+    margin-top: 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--ink-warm);
+    letter-spacing: 0.08em;
+  }
+  footer.page-footer .copy a { color: var(--ink-warm); background: none; }
+  footer.page-footer .copy a:hover { color: var(--warm-brown); background: none; }
+
+  /* ========== REVEAL ========== */
+  .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ========== MOBILE ========== */
+  @media (max-width: 760px) {
+    .topnav-inner { padding: 0.85rem 1.1rem; flex-wrap: wrap; gap: 0.6rem; }
+    .topnav .schema-path { font-size: 0.64rem; }
+    .topnav .schema-path .seg { padding: 0.12rem 0.36rem; }
+    .hero { padding: 3rem 1.1rem 1.8rem; }
+    .hero::before { width: 60px; height: 60px; top: 3rem; right: 1rem; }
+    article { padding: 1.5rem 1.1rem 3.5rem; }
+    .section { grid-template-columns: 1fr; gap: 0.5rem; }
+    .section-marker { padding-top: 0; }
+    .body-content { grid-column: 1; }
+    blockquote.alert { font-size: 1.16rem; }
+    blockquote.takeaway { padding: 1.8rem 1rem; }
+    blockquote.takeaway strong { font-size: 1.4rem; }
+    blockquote.feature { padding: 1.4rem 1rem; font-size: 1.05rem; }
+    .body-content > p.dropcap::first-letter { font-size: 3.6rem; }
+    ol.steps > li { padding: 1rem 1rem 1rem 3.6rem; }
+    ol.steps > li::before { width: 2.1rem; height: 2.1rem; font-size: 0.72rem; left: 0.7rem; }
+    .phase-block { padding: 1.2rem 1rem; }
+    th, td { padding: 0.6rem 0.7rem; font-size: 0.88rem; }
+    .postscript { padding: 1.5rem 1.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="back" href="../">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12L6 8l4-4"/></svg>
+      Quay lại SecondBrain
+    </a>
+    <div class="schema-path" aria-label="Đường dẫn">
+      <a class="seg" href="../../">sites</a>
+      <span class="arrow">›</span>
+      <a class="seg" href="../">SecondBrain</a>
+      <span class="arrow">›</span>
+      <span class="seg active">01_learnAI</span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-eyebrow">
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="8" cy="8" r="3"/></svg>
+    Essay · 01.05.2026
+  </span>
+  <h1 class="hero-title">Dùng chính AI<br>để dạy mình<br><em>về AI.</em></h1>
+  <div class="hero-meta">
+    <span class="chip">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M8 4v4l2.5 1.5"/></svg>
+      ~10 phút đọc
+    </span>
+    <span class="chip">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M3 12h10M3 8h10M3 4h10"/></svg>
+      VI · 1975 chữ
+    </span>
+    <span class="chip tech">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M5 6L2 8l3 2M11 6l3 2-3 2M9 4l-2 8"/></svg>
+      tutorial · v1
+    </span>
+  </div>
+</header>
+
+<article>
+
+  <!-- ========== SECTION I ========== -->
+  <section class="section" id="s1">
+    <div class="section-marker">
+      <span class="num">§ 01</span>
+      <span class="schema" aria-hidden="true">
+        <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="0.8">
+          <path d="M0 6 L20 6"/>
+          <circle cx="26" cy="6" r="2.4" fill="currentColor"/>
+          <path d="M32 6 L60 6"/>
+        </svg>
+      </span>
+    </div>
+    <h2 class="section-title">Học kiến thức về AI <em>từ nguồn nào?</em></h2>
+  </section>
+
+  <div class="body-content reveal">
+    <p class="dropcap">Vài hôm trước, anh <strong>Lã Chí Dũng</strong> hỏi trong nhóm AIMM2026 rằng:</p>
+    <blockquote class="collegial"><em>"Có ai biết nguồn nào học Claude uy tín dễ hiểu không ạ? Em tìm trên mạng mấy hôm nay mà nói rối rắm quá, tiếng Anh đã dốt thì chớ, xem ko hiểu gì cả."</em></blockquote>
+    <p>Mình có trả lời rằng:</p>
+    <blockquote class="collegial"><em>"Em dùng chính Claude dạy em Claude á anh. Để em tạo cái tutorial gửi mọi người cách em đã từng làm."</em></blockquote>
+    <p>Và bài này chính là tutorial <strong>"Dùng chính AI để dạy mình mọi thứ về AI"</strong> đó.</p>
+    <p>Nhưng trước khi đọc tiếp, bạn thử nhớ xem mình có từng:</p>
+    <ul class="pain-list">
+      <li>Theo dõi 50 AI creator trên Facebook, Substack, lưu hết link bookmark, rồi ba tháng sau xem lại thì không nhớ đã đọc gì và áp dụng được gì cho bản thân?</li>
+      <li>Đọc xong khoá AI thấy hiểu 80%, một tuần sau ngồi xuống thử áp dụng thì rỗng, đổ tại <em>"mình thiếu thực hành"</em>?</li>
+      <li>Cài đặt Obsidian, đăng ký luôn premium Obsidian Sync, nhưng dùng một tuần thấy không hiệu quả, bỏ dở, quay về Word vì <em>"tiện"</em>?</li>
+    </ul>
+    <p>Có, mình cũng từng. Nhưng đó không phải lười, không phải là thiếu thực hành. Thực ra, đó là do mình chưa có một quy trình hay hệ thống để học tập một kiến thức mới và áp dụng nó vào cuộc sống hiện tại.</p>
+    <p><em>Mình cũng đã từng như vậy, và rồi…</em></p>
+  </div>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 100 14" fill="none" stroke="currentColor" stroke-width="0.8">
+      <path d="M0 7 L36 7"/>
+      <circle cx="44" cy="7" r="2"/>
+      <path d="M48 4 L52 7 L48 10"/>
+      <circle cx="56" cy="7" r="2"/>
+      <path d="M64 7 L100 7"/>
+    </svg>
+  </div>
+
+  <!-- ========== SECTION II ========== -->
+  <section class="section" id="s2">
+    <div class="section-marker">
+      <span class="num">§ 02</span>
+      <span class="schema" aria-hidden="true">
+        <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="0.8">
+          <path d="M0 6 L20 6"/>
+          <circle cx="26" cy="6" r="2.4" fill="currentColor"/>
+          <path d="M32 6 L60 6"/>
+        </svg>
+      </span>
+    </div>
+    <h2 class="section-title">Khoảnh khắc <em>chân trời mở ra</em></h2>
+  </section>
+
+  <div class="body-content reveal">
+    <p class="dropcap">Hồi ChatGPT vừa ra mắt vào đầu năm 2023, mình đã từng say mê nói chuyện với con AI LLM này để viết một bài luận xin học bổng chuẩn chỉ. Nhưng mà sau đó, những kiến thức AI, LLM, ChatGPT… đi vào dĩ vãng dưới sự bận rộn của núi công việc phía trước.</p>
+    <p>Bẵng đi gần hai năm, đến cuối năm 2025, mình mới bắt đầu học lại AI và cài đặt thử Antigravity, Claude Code. Nhưng mà, khi mở công cụ được nhiều người giới thiệu này, mình thấy quá nhiều khái niệm mới lạ: Skill, MCP, <code>claude -p</code>, CLI, Hooks…</p>
+    <blockquote class="alert"><em>Quá tải!!!</em></blockquote>
+    <p>Mình tự hỏi <em>"Giờ bắt đầu học từ đâu, tự học có khi nào đi sai đường không, hiểu sai mà không có phản hồi thì sao?"</em>. Cảm giác này quen quen, hình như mình đã gặp nhiều lần và nhiều người khác cũng bị tương tự khi tự học.</p>
+    <p>Sau đó, mình bắt đầu tìm trên Internet. May mắn, <a href="https://www.anthropic.com/learn" target="_blank" rel="noopener">trang chủ Anthropic</a> có một trang web chuyên dạy những khái niệm mới này. Mình kêu Claude tải về toàn bộ kiến thức đó và lưu vào một thư mục riêng tên là <code>/learning</code>.</p>
+    <p>Trong quá trình đọc kiến thức mới lưu này, mình thấy vẫn phức tạp quá. Sao nó khác hẳn với cách mình học trên ChatGPT vậy. Trên ChatGPT hay Gemini có một cái mode gọi là <strong>Study Mode</strong>. Dùng nó để học một khái niệm mới và thấy rất hiệu quả, kiểu hỏi-đáp Socratic ép active recall. Vậy là mình kêu Claude tạo cho mình một Skill tương tự. Đặt tên <code>/h3learn</code>.</p>
+    <p>Phiên đầu tiên với <code>/h3learn</code>, một câu hỏi một câu trả lời, từng bước, dễ hiểu dễ nhớ. Khi mình trả lời chưa chính xác, Claude phản biện thẳng chỗ hiểu sai. Không né tránh, không phán xét. Đó là khoảnh khắc một chân trời mở ra.</p>
+    <p>Mình nhận ra: <strong>hoàn toàn có thể dùng AI để nâng cấp năng lực bản thân.</strong> Trong thế giới tương tác giữa con người với AI, chỉ có con người là bên có thể tiến bộ và tiến hoá. Vậy tại sao không dùng chính AI để nâng cấp chính mình?</p>
+  </div>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 100 14" fill="none" stroke="currentColor" stroke-width="0.8">
+      <path d="M0 7 L36 7"/>
+      <circle cx="44" cy="7" r="2"/>
+      <path d="M48 4 L52 7 L48 10"/>
+      <circle cx="56" cy="7" r="2"/>
+      <path d="M64 7 L100 7"/>
+    </svg>
+  </div>
+
+  <!-- ========== SECTION III ========== -->
+  <section class="section" id="s3">
+    <div class="section-marker">
+      <span class="num">§ 03</span>
+      <span class="schema" aria-hidden="true">
+        <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="0.8">
+          <path d="M0 6 L20 6"/>
+          <circle cx="26" cy="6" r="2.4" fill="currentColor"/>
+          <path d="M32 6 L60 6"/>
+        </svg>
+      </span>
+    </div>
+    <h2 class="section-title">Mindset <em>quan trọng hơn</em> toolset</h2>
+  </section>
+
+  <div class="body-content reveal">
+    <p class="dropcap">Bài này KHÔNG chia sẻ skill <code>/h3learn</code> một cách cụ thể.</p>
+
+    <div class="note">
+      <span class="label">Lý do</span>
+      H3 có nền tảng công nghệ (là một kỹ sư phần cứng) và từng xây Second Brain v1.0 từ trước, nên từ ý tưởng đến việc xây dựng một workflow tự học này nhanh chóng. Bạn copy-paste y nguyên skill nhưng không chắc bạn hiểu nó và càng khó để áp dụng nó cho trường hợp của chính mình.
+    </div>
+
+    <p>Điều quan trọng hơn là <strong>mindset</strong>, chứ không phải toolset.</p>
+    <p><strong>Mindset</strong> gói trong một câu <strong>If-Then</strong>:</p>
+
+    <blockquote class="feature">
+      <strong>Nếu</strong> bạn muốn <em>học một kiến thức mới</em>,<br>
+      <strong>Hãy</strong> sử dụng AI để <em>nghiên cứu tri thức</em> về lĩnh vực đó,<br>
+      sau đó dùng chính AI để <em>dạy mình những kiến thức này</em><br>
+      từng chút một, như một người gia sư cần mẫn.
+    </blockquote>
+
+    <p>Ba bước cụ thể:</p>
+    <ol class="steps">
+      <li>
+        <strong>Bootstrap context.</strong>
+        <p>Trước khi nhờ AI dạy, hãy xây dựng kho kiến thức cho lĩnh vực bạn đang quan tâm trước. Có thể dùng NotebookLM với Deep Search mode để tìm kiếm tri thức Internet. Hoặc kêu AI phỏng vấn ngược mình để biết lỗ hổng tri thức của chính mình. Bước này vô cùng quan trọng. Nếu chính mình còn không biết mình định học cái gì thì sao AI có thể dạy bạn.</p>
+      </li>
+      <li>
+        <strong>AI Socratic skill.</strong>
+        <p>Tạo một flow Teach → Quiz → Teach-back. Một câu hỏi một câu trả lời. Khi teach-back sai, AI phản biện thẳng thắn và đưa ra câu trả lời chính xác hơn. Không phải <em>"hi vọng AI đúng"</em>, mà ép chính mình phải xác nhận mình hiểu đúng.</p>
+      </li>
+      <li>
+        <strong>Daily repeat.</strong>
+        <p>Save flow vào skill, system prompt hoặc saved chat, gọi lặp lại bất cứ khi nào: AI hỏi mỗi sáng lúc trên xe bus, hay mỗi tối lúc đi dạo bộ công viên… Mọi lúc, mọi nơi, mọi thiết bị.</p>
+      </li>
+    </ol>
+
+    <p>Ví dụ cụ thể một trường hợp của chính H3: tháng trước, mình cần chuẩn bị để đi phỏng vấn cho công ty X. Vậy là:</p>
+    <ol class="steps">
+      <li>
+        <strong>Bước 1.</strong>
+        <p>Mình dùng Claude để cập nhật CV bản thân, đồng thời kêu Claude nghiên cứu chi tiết về công ty X và JD (Job Description) mà mình muốn ứng tuyển (lưu ở <code>/work/X</code>).</p>
+      </li>
+      <li>
+        <strong>Bước 2.</strong>
+        <p>Mình dùng skill <code>/h3learn</code> để tạo một đề cương để học và ghi nhớ kiến thức (lưu ở <code>/learning/x-interview</code>).</p>
+      </li>
+      <li>
+        <strong>Bước 3.</strong>
+        <p>Sau đó, mình gọi lại skill <code>/h3learn</code> nhiều lần nữa thông qua Telegram OpenClaw bot trên iPhone, mình có thể vừa đi dạo vừa ghi nhớ và chuẩn bị cho cuộc phỏng vấn vào ngày tiếp theo.</p>
+      </li>
+    </ol>
+
+    <p>Phương pháp học tập đứt quãng (spaced repetition) này giúp mình có một sự chuẩn bị hoàn hảo cho một cuộc phỏng vấn. Không chỉ vậy, phương pháp này còn giúp cho mình học nhiều kiến thức mới trong nhiều lĩnh vực không chuyên (ví dụ để học AI, học quản trị tài chính, học về đạo Phật…).</p>
+  </div>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 100 14" fill="none" stroke="currentColor" stroke-width="0.8">
+      <path d="M0 7 L36 7"/>
+      <circle cx="44" cy="7" r="2"/>
+      <path d="M48 4 L52 7 L48 10"/>
+      <circle cx="56" cy="7" r="2"/>
+      <path d="M64 7 L100 7"/>
+    </svg>
+  </div>
+
+  <!-- ========== SECTION IV ========== -->
+  <section class="section" id="s4">
+    <div class="section-marker">
+      <span class="num">§ 04</span>
+      <span class="schema" aria-hidden="true">
+        <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="0.8">
+          <path d="M0 6 L20 6"/>
+          <circle cx="26" cy="6" r="2.4" fill="currentColor"/>
+          <path d="M32 6 L60 6"/>
+        </svg>
+      </span>
+    </div>
+    <h2 class="section-title">Hành trình giao tiếp <em>với AI</em></h2>
+  </section>
+
+  <div class="body-content reveal">
+    <p class="dropcap">Ở phần cuối này, mình giới thiệu chi tiết lộ trình ba phase mà mình từng đi qua để có thể giao tiếp với AI một cách hiệu quả: <strong>Hiểu AI</strong>, <strong>Làm việc cùng AI</strong>, và <strong>Tự động hoá với AI</strong>.</p>
+
+    <div class="phase-block">
+      <h3 class="phase-title"><span class="phase-tag">Phase 01</span>Hiểu AI</h3>
+      <div class="phase-capability">
+        Hiểu cái máy mình đang nói chuyện. Không cần xây LLM từ đầu, chỉ cần intuition đủ để đừng coi AI là phép thuật.
+      </div>
+      <p><strong>AI = máy đoán token.</strong> Token là đơn vị nhỏ AI dùng để "đọc" câu của bạn (ví dụ chữ "ngữ pháp" có thể bị cắt thành 2 token). AI không "hiểu" theo cách con người hiểu, nó dự đoán xác suất token tiếp theo dựa trên pattern đã học. Bỏ qua insight này, mọi mẹo prompt phía sau thành cargo-cult: sao chép hình thức mà không nắm cơ chế.</p>
+      <div class="phase-resources">
+        <span class="label">Tài liệu</span>
+        Khoá mình theo: <a href="https://onair.today/online-course/ai-a-z-tu-lung-tung-den-thanh-thao" target="_blank" rel="noopener"><strong>AI A-Z: Từ Lúng Túng đến Thành Thạo</strong> (OnAir Today)</a>, đặc biệt là chương <em>"Sự thật về Gen AI"</em>. Tham khảo thêm cho ai muốn đi sâu kỹ thuật: <a href="https://github.com/rohitg00/ai-engineering-from-scratch" target="_blank" rel="noopener">AI Engineering From Scratch</a>.
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <h3 class="phase-title"><span class="phase-tag">Phase 02</span>Làm việc cùng AI</h3>
+      <div class="phase-capability">
+        Song hành với AI như một cộng sự (junior engineer). Bạn giao việc, AI viết, bạn duyệt. Bạn vẫn là người duyệt cuối.
+      </div>
+      <p>Mỗi prompt cần ba thành phần: <strong>Goal</strong> (mục tiêu cụ thể) + <strong>Context</strong> (bối cảnh, file liên quan) + <strong>Constraint</strong> (giới hạn output: ngôn ngữ, format, edge case).</p>
+      <p>Thiếu một trong ba, AI dễ bịa (hallucinate). AI là junior engineer (cần brief rõ), không phải oracle (đấng tiên tri). Bạn vẫn là người phán xét cuối.</p>
+      <p>Mỗi AI Agent tool có một vai trò riêng:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tool</th><th>Vai trò</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Cursor</strong></td><td>AI hỗ trợ code, mình vẫn cầm vô-lăng từng dòng.</td></tr>
+            <tr><td><strong>Claude Code</strong></td><td>Agent trên terminal, "AI như đồng nghiệp junior", mình giao việc và duyệt kế hoạch trước khi đưa ra.</td></tr>
+            <tr><td><strong>Antigravity</strong></td><td>Agent-first, tự động hoá nghiên cứu, mình mô tả mục tiêu, agent team thực thi, mình duyệt kết quả.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="phase-resources">
+        <span class="label">Tài liệu</span>
+        Mình học kiến thức này qua khoá học <a href="https://the1ight.com/product/vibe_coding_advance/" target="_blank" rel="noopener"><strong>VibeCoding (The1ight)</strong></a>.
+      </div>
+      <div class="note" style="margin-top:1rem;">
+        <span class="label">Lưu ý</span>
+        Tool sẽ đổi tên hoặc bị thay thế trong 6-12 tháng. Năng lực <em>"AI như đồng nghiệp junior"</em> thì còn, đổi sang tool nào quen tay cũng được. Đừng theo đuổi tool, theo đuổi data (target: Second Brain).
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <h3 class="phase-title"><span class="phase-tag">Phase 03</span>Tự động hoá với AI</h3>
+      <div class="phase-capability">
+        Xây dựng AI agent hoặc Skill (đóng gói flow thành một câu lệnh tự động hoá) cho workflow cá nhân.
+      </div>
+      <p>Đây là điểm dừng hiện tại trong hành trình sử dụng AI của mình: <em>sử dụng AI để tự động chạy các tác vụ hàng ngày thay vì phải làm tay.</em></p>
+      <p>Ví dụ một số việc hằng ngày mà AI làm tự động thay mình: AI tự tổng hợp clipping web thành trang wiki hàng tuần; bot Telegram tự nhắc lịch mỗi ngày và tóm tắt progress các dự án đang tham gia; AI đọc daily journal và gợi ý chủ đề suy ngẫm sâu mỗi cuối tuần.</p>
+      <p>Xuyên suốt cả ba phase, mình dùng <code>/h3learn</code> (skill study-coach Socratic, pattern Teach → Quiz → Teach-back → Spaced review) để khoá kiến thức không quên.</p>
+    </div>
+  </div>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 100 14" fill="none" stroke="currentColor" stroke-width="0.8">
+      <path d="M0 7 L36 7"/>
+      <circle cx="44" cy="7" r="2"/>
+      <path d="M48 4 L52 7 L48 10"/>
+      <circle cx="56" cy="7" r="2"/>
+      <path d="M64 7 L100 7"/>
+    </svg>
+  </div>
+
+  <!-- ========== SECTION V ========== -->
+  <section class="section" id="s5">
+    <div class="section-marker">
+      <span class="num">§ 05</span>
+      <span class="schema" aria-hidden="true">
+        <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="0.8">
+          <path d="M0 6 L20 6"/>
+          <circle cx="26" cy="6" r="2.4" fill="currentColor"/>
+          <path d="M32 6 L60 6"/>
+        </svg>
+      </span>
+    </div>
+    <h2 class="section-title">Lời <em>kết</em></h2>
+  </section>
+
+  <div class="body-content reveal">
+    <p class="dropcap">Bài này không phải một bài hướng dẫn chi tiết cách bạn xây một workflow hoàn chỉnh để AI có thể dạy mình mọi kiến thức trên đời. Mình chỉ muốn nó là một hạt mầm nảy trong đầu bạn, để bạn có mindset sử dụng AI hiệu quả để học bất cứ điều gì.</p>
+    <p>Còn khi hạt mầm muốn sinh sôi, đâm chồi nảy lộc, hãy bỏ hạt mầm này vào một <em>"chậu nước"</em>. Chậu nước này chính là AI. Hãy đưa bài viết này cho AI để nó đọc hiểu và trao đổi với nó, để cả hai (người và máy) có thể hiểu rõ mindset này. Sau đó, cả hai sẽ cùng nhau xây dựng một workflow học tập phù hợp với bạn nhất.</p>
+    <p>Sau khi đọc xong, hãy mở Claude / ChatGPT / Antigravity, paste link bài này vào, và bảo nó:</p>
+    <blockquote class="collegial">
+      <em>"Hãy đọc hiểu bài viết [link bài viết này] và sử dụng nó như một tài liệu tham khảo để giúp tôi xây dựng một workflow / skill để học một kiến thức mới bất kỳ. Ví dụ tôi đang muốn học [X]."</em>
+    </blockquote>
+
+    <blockquote class="takeaway">
+      <strong>Mindset trước, <span class="swap">toolset sau.</span></strong>
+    </blockquote>
+
+    <p>H3 chỉ như một ngọn hải đăng, giúp bạn có một định hướng rõ ràng để đi con đường mà H3 đã từng đi qua. Còn việc của bạn là bắt đầu cầm vững bánh lái và đưa con thuyền của bạn đến những chân trời kiến thức mới.</p>
+
+    <div class="postscript">
+      <p>AI hiện tại đang rẻ hơn giá trị thật của nó. Lý do là các <strong>ông lớn AI</strong> đang sale như Grab hồi xưa, mục đích là để chiếm lĩnh thị trường. Nhưng điều này sẽ không kéo dài mãi, vì vậy nếu ai tận dụng được giai đoạn này để bắt đầu sử dụng AI thì sẽ có lợi thế lớn so với phần còn lại của thế giới.</p>
+    </div>
+  </div>
+
+</article>
+
+<footer class="page-footer">
+  <div class="footer-inner">
+    <a class="breadcrumb" href="../">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 12L6 8l4-4"/></svg>
+      Quay lại SecondBrain
+    </a>
+    <div class="copy">© <a href="https://yoloh3.com/">yoloh3</a> · 2026</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>SecondBrain | yoloh3.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SecondBrain by H3 — đóng gói nhỏ về AI và PKM, share warm cohort.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://yoloh3.com/sites/SecondBrain/">
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../css/main.css">
+<style>
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #f5efe6;
+    color: #2d2a26;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .hub-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .hub-header h1 {
+    font-size: 1.6rem;
+    color: #6b4f3a;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+  .hub-tagline {
+    font-size: 1rem;
+    color: #6b4f3a;
+    opacity: 0.85;
+  }
+  .hub-image-wrap {
+    position: relative;
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+  }
+  .hub-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(45, 42, 38, 0.12);
+  }
+  .hub-fallback {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem auto 0;
+    max-width: 480px;
+  }
+  .hub-fallback li {
+    margin: 0;
+  }
+  .hub-fallback a,
+  .hub-fallback span {
+    display: block;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background: #fff;
+    color: #6b4f3a;
+    text-decoration: none;
+    border: 1px solid #d4b896;
+    min-height: 44px;
+    transition: background 0.15s ease;
+  }
+  .hub-fallback a:hover {
+    background: #d4b896;
+    color: #2d2a26;
+  }
+  .hub-fallback .placeholder {
+    color: #a67b5b;
+    opacity: 0.55;
+    font-style: italic;
+    cursor: not-allowed;
+    border-style: dashed;
+  }
+  .hub-footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 0.85rem;
+    color: #a67b5b;
+    opacity: 0.7;
+  }
+  .hub-footer a {
+    color: #6b4f3a;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1.5rem 0.75rem; }
+    .hub-header h1 { font-size: 1.3rem; }
+    .hub-image-wrap img { border-radius: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hub-header">
+  <h1>SecondBrain</h1>
+  <p class="hub-tagline">Đóng gói nhỏ về AI và PKM — của H3, dành cho người ham học</p>
+</header>
+
+<!-- Bridge coords estimated from hub.jpeg (2400x1792). Verify in Preview if precise tap target needed.
+     Image map uses image's natural pixel size; browser auto-scales for responsive img. -->
+<div class="hub-image-wrap">
+  <img src="image/hub.jpeg" alt="SecondBrain hub — bản đồ ba cây cầu giữa hai dãy nhà" usemap="#hub-map">
+  <map name="hub-map">
+    <!-- Bridge 1 (active, foreground big wooden bridge with cream panel): link to 01_learnAI/ -->
+    <area shape="rect"
+          coords="384,896,1680,1308"
+          href="01_learnAI/"
+          alt="01 learnAI — học AI từ con số 0"
+          title="01 learnAI — học AI từ con số 0">
+    <!-- Bridge 2 + 3 are decorative placeholders. No <area> = not clickable. -->
+  </map>
+</div>
+
+<!-- Mobile fallback: text links cho touch users (image map khó tap precise) -->
+<ul class="hub-fallback">
+  <li><a href="01_learnAI/">01 · learnAI — mình dùng Claude để dạy em Claude</a></li>
+  <li><span class="placeholder">02 · Sắp ra mắt</span></li>
+  <li><span class="placeholder">03 · Sắp ra mắt</span></li>
+</ul>
+
+<footer class="hub-footer">
+  <p>by <a href="https://yoloh3.com/">H3</a> · 2026</p>
+</footer>
+
+</body>
+</html>
