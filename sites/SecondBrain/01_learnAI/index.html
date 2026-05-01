@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <title>Dùng chính AI để dạy mình về AI · yoloh3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Tutorial mình hứa với anh Lã Chí Dũng — dùng chính AI để dạy mình về AI, mindset trước toolset sau.">
+<meta name="description" content="Mindset trước, toolset sau. Cách dùng chính AI để học mọi kiến thức mới, từ AI Claude tới quản trị tài chính cá nhân.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#f5efe6">
 <link rel="canonical" href="https://yoloh3.com/sites/SecondBrain/01_learnAI/">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dùng chính AI để dạy mình về AI">
-<meta property="og:description" content="Tutorial mình hứa với anh Lã Chí Dũng. Mindset trước, toolset sau.">
+<meta property="og:description" content="Mindset trước, toolset sau. Cách dùng chính AI để học mọi kiến thức mới.">
 <meta property="og:url" content="https://yoloh3.com/sites/SecondBrain/01_learnAI/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dùng chính AI để dạy mình về AI">
@@ -19,7 +19,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,30..100;1,9..144,300..900,30..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -61,9 +61,10 @@
     margin: 0;
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 17px;
-    line-height: 1.7;
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 450;
+    line-height: 1.72;
     font-feature-settings: "kern", "liga", "onum";
     overflow-x: hidden;
   }
@@ -110,11 +111,10 @@
     color: var(--ink-warm);
     text-decoration: none;
     background-image: none;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 0.96rem;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -175,22 +175,20 @@
   .hero-eyebrow svg { width: 12px; height: 12px; color: var(--gold); }
 
   h1.hero-title {
-    font-family: 'Fraunces', serif;
-    font-weight: 350;
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-weight: 600;
     font-size: clamp(2.6rem, 7vw, 5rem);
     line-height: 0.98;
     letter-spacing: -0.025em;
     color: var(--ink);
     margin: 0 0 1.6rem;
     max-width: 16ch;
-    font-variation-settings: "opsz" 144, "SOFT" 50;
     position: relative;
   }
   h1.hero-title em {
     font-style: italic;
     font-weight: 400;
     color: var(--warm-brown);
-    font-variation-settings: "opsz" 144, "SOFT" 100;
     position: relative;
     display: inline-block;
   }
@@ -205,15 +203,14 @@
     background-size: 100% 100%;
   }
   .hero-deck {
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
-    font-weight: 350;
+    font-weight: 450;
     font-size: 1.2rem;
     color: var(--ink-soft);
     margin: 0 0 2.4rem;
     max-width: 30ch;
     line-height: 1.5;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
   }
   .hero-meta {
     display: flex;
@@ -275,19 +272,17 @@
   }
   .section-marker .schema svg { width: 100%; height: 100%; }
   h2.section-title, h1.section-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-weight: 400;
     font-size: clamp(1.85rem, 3.5vw, 2.5rem);
     line-height: 1.12;
     letter-spacing: -0.018em;
     color: var(--ink);
     margin: 0;
-    font-variation-settings: "opsz" 120, "SOFT" 50;
   }
   .section-title em {
     font-style: italic;
     color: var(--warm-brown);
-    font-variation-settings: "opsz" 120, "SOFT" 100;
     font-weight: 400;
   }
 
@@ -302,24 +297,8 @@
   .body-content > p:first-child { margin-top: 0.6rem; }
   .body-content strong { color: var(--ink); font-weight: 600; }
   .body-content em {
-    font-family: 'Fraunces', serif;
     font-style: italic;
     color: var(--ink-warm);
-    font-variation-settings: "opsz" 24, "SOFT" 100;
-  }
-
-  /* Drop cap on first paragraph after section */
-  .body-content > p.dropcap::first-letter {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 4.4rem;
-    line-height: 0.88;
-    float: left;
-    margin: 0.36rem 0.7rem -0.05rem 0;
-    color: var(--warm-brown);
-    font-variation-settings: "opsz" 144, "SOFT" 30;
-    letter-spacing: -0.02em;
   }
 
   /* Inline links — sage underline w/ gold hover */
@@ -356,7 +335,7 @@
     background: var(--paper-soft);
     border-left: 2px solid var(--sage);
     border-radius: 1px;
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 1rem;
     color: var(--ink-soft);
     position: relative;
@@ -367,7 +346,7 @@
     position: absolute;
     top: -0.2rem;
     left: 0.4rem;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     font-size: 1.6rem;
     color: var(--sage-deep);
@@ -382,13 +361,12 @@
     background: linear-gradient(180deg, var(--paper-soft) 0%, var(--paper-deep) 100%);
     border-top: 1px solid var(--gold);
     border-bottom: 1px solid var(--gold);
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-size: 1.2rem;
     line-height: 1.5;
     color: var(--ink);
     font-style: italic;
-    font-weight: 350;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
+    font-weight: 450;
   }
   blockquote.feature strong { color: var(--warm-brown); font-weight: 500; font-style: normal; }
   blockquote.feature em { font-style: italic; color: var(--ink-warm); }
@@ -441,17 +419,16 @@
   blockquote.takeaway::before { top: 8px; left: 8px; border-right: none; border-bottom: none; }
   blockquote.takeaway::after { bottom: 8px; right: 8px; border-left: none; border-top: none; }
   blockquote.takeaway strong {
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-weight: 400;
     font-size: clamp(1.6rem, 3.2vw, 2.2rem);
     color: var(--ink);
     letter-spacing: -0.018em;
     line-height: 1.18;
     font-style: italic;
-    font-variation-settings: "opsz" 144, "SOFT" 100;
     display: block;
   }
-  blockquote.takeaway strong span.swap { color: var(--warm-brown); font-style: normal; font-variation-settings: "opsz" 144, "SOFT" 50; }
+  blockquote.takeaway strong span.swap { color: var(--warm-brown); font-style: normal; }
 
   /* Lists */
   ul, ol { padding-left: 1.4rem; margin: 0 0 1.3rem; }
@@ -482,11 +459,10 @@
     position: absolute;
     left: 0.95rem;
     top: 0.95rem;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     color: var(--gold);
     font-size: 0.94rem;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
   }
   ul.pain-list li:hover { border-left-color: var(--warm-brown); transform: translateX(3px); }
 
@@ -528,12 +504,11 @@
   }
   ol.steps > li strong {
     display: block;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-weight: 500;
     font-size: 1.04rem;
     color: var(--ink);
     margin-bottom: 0.35rem;
-    font-variation-settings: "opsz" 36, "SOFT" 50;
   }
   ol.steps > li > p { margin: 0; font-size: 0.96rem; }
 
@@ -594,7 +569,7 @@
     border-bottom: 1px solid var(--blueprint);
   }
   h3.phase-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-weight: 500;
     font-size: 1.36rem;
     color: var(--blueprint-deep);
@@ -602,7 +577,6 @@
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    font-variation-settings: "opsz" 60, "SOFT" 50;
     letter-spacing: -0.01em;
   }
   .phase-tag {
@@ -624,11 +598,10 @@
     padding: 0.9rem 1.1rem;
     background: var(--paper-soft);
     border-left: 2px solid var(--gold);
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     font-size: 1rem;
     color: var(--ink);
-    font-variation-settings: "opsz" 36, "SOFT" 100;
   }
   .phase-block p { color: var(--ink-soft); }
   .phase-block .phase-resources {
@@ -685,7 +658,7 @@
     background: linear-gradient(135deg, #2d2418 0%, #3a2e1f 100%);
     color: var(--ochre);
     border-radius: 2px;
-    font-family: 'Source Serif 4', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     font-size: 0.98rem;
     line-height: 1.62;
@@ -697,12 +670,11 @@
     position: absolute;
     top: 0.7rem;
     right: 1.2rem;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     color: var(--gold);
     font-size: 0.86rem;
     letter-spacing: 0.04em;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
   }
   .postscript::after {
     content: "";
@@ -744,12 +716,11 @@
     border: 1px solid var(--border);
     padding: 0.55rem 1.1rem;
     border-radius: 2px;
-    font-family: 'Fraunces', serif;
+    font-family: 'Public Sans', system-ui, sans-serif;
     font-style: italic;
     font-size: 0.96rem;
     transition: border-color 0.2s ease, transform 0.2s ease;
     background-image: none;
-    font-variation-settings: "opsz" 60, "SOFT" 100;
   }
   footer.page-footer .breadcrumb:hover { border-color: var(--warm-brown); transform: translateX(-3px); color: var(--warm-brown); }
   footer.page-footer .breadcrumb svg { width: 14px; height: 14px; }
@@ -782,7 +753,6 @@
     blockquote.takeaway { padding: 1.8rem 1rem; }
     blockquote.takeaway strong { font-size: 1.4rem; }
     blockquote.feature { padding: 1.4rem 1rem; font-size: 1.05rem; }
-    .body-content > p.dropcap::first-letter { font-size: 3.6rem; }
     ol.steps > li { padding: 1rem 1rem 1rem 3.6rem; }
     ol.steps > li::before { width: 2.1rem; height: 2.1rem; font-size: 0.72rem; left: 0.7rem; }
     .phase-block { padding: 1.2rem 1rem; }
@@ -855,7 +825,7 @@
   </section>
 
   <div class="body-content reveal">
-    <p class="dropcap">Vài hôm trước, anh <strong>Lã Chí Dũng</strong> hỏi trong nhóm AIMM2026 rằng:</p>
+    <p>Vài hôm trước, anh <strong>Lã Chí Dũng</strong> hỏi trong nhóm AIMM2026 rằng:</p>
     <blockquote class="collegial"><em>"Có ai biết nguồn nào học Claude uy tín dễ hiểu không ạ? Em tìm trên mạng mấy hôm nay mà nói rối rắm quá, tiếng Anh đã dốt thì chớ, xem ko hiểu gì cả."</em></blockquote>
     <p>Mình có trả lời rằng:</p>
     <blockquote class="collegial"><em>"Em dùng chính Claude dạy em Claude á anh. Để em tạo cái tutorial gửi mọi người cách em đã từng làm."</em></blockquote>
@@ -896,7 +866,7 @@
   </section>
 
   <div class="body-content reveal">
-    <p class="dropcap">Hồi ChatGPT vừa ra mắt vào đầu năm 2023, mình đã từng say mê nói chuyện với con AI LLM này để viết một bài luận xin học bổng chuẩn chỉ. Nhưng mà sau đó, những kiến thức AI, LLM, ChatGPT… đi vào dĩ vãng dưới sự bận rộn của núi công việc phía trước.</p>
+    <p>Hồi ChatGPT vừa ra mắt vào đầu năm 2023, mình đã từng say mê nói chuyện với con AI LLM này để viết một bài luận xin học bổng chuẩn chỉ. Nhưng mà sau đó, những kiến thức AI, LLM, ChatGPT… đi vào dĩ vãng dưới sự bận rộn của núi công việc phía trước.</p>
     <p>Bẵng đi gần hai năm, đến cuối năm 2025, mình mới bắt đầu học lại AI và cài đặt thử Antigravity, Claude Code. Nhưng mà, khi mở công cụ được nhiều người giới thiệu này, mình thấy quá nhiều khái niệm mới lạ: Skill, MCP, <code>claude -p</code>, CLI, Hooks…</p>
     <blockquote class="alert"><em>Quá tải!!!</em></blockquote>
     <p>Mình tự hỏi <em>"Giờ bắt đầu học từ đâu, tự học có khi nào đi sai đường không, hiểu sai mà không có phản hồi thì sao?"</em>. Cảm giác này quen quen, hình như mình đã gặp nhiều lần và nhiều người khác cũng bị tương tự khi tự học.</p>
@@ -932,7 +902,7 @@
   </section>
 
   <div class="body-content reveal">
-    <p class="dropcap">Bài này KHÔNG chia sẻ skill <code>/h3learn</code> một cách cụ thể.</p>
+    <p>Bài này KHÔNG chia sẻ skill <code>/h3learn</code> một cách cụ thể.</p>
 
     <div class="note">
       <span class="label">Lý do</span>
@@ -1010,7 +980,7 @@
   </section>
 
   <div class="body-content reveal">
-    <p class="dropcap">Ở phần cuối này, mình giới thiệu chi tiết lộ trình ba phase mà mình từng đi qua để có thể giao tiếp với AI một cách hiệu quả: <strong>Hiểu AI</strong>, <strong>Làm việc cùng AI</strong>, và <strong>Tự động hoá với AI</strong>.</p>
+    <p>Ở phần cuối này, mình giới thiệu chi tiết lộ trình ba phase mà mình từng đi qua để có thể giao tiếp với AI một cách hiệu quả: <strong>Hiểu AI</strong>, <strong>Làm việc cùng AI</strong>, và <strong>Tự động hoá với AI</strong>.</p>
 
     <div class="phase-block">
       <h3 class="phase-title"><span class="phase-tag">Phase 01</span>Hiểu AI</h3>
@@ -1091,7 +1061,7 @@
   </section>
 
   <div class="body-content reveal">
-    <p class="dropcap">Bài này không phải một bài hướng dẫn chi tiết cách bạn xây một workflow hoàn chỉnh để AI có thể dạy mình mọi kiến thức trên đời. Mình chỉ muốn nó là một hạt mầm nảy trong đầu bạn, để bạn có mindset sử dụng AI hiệu quả để học bất cứ điều gì.</p>
+    <p>Bài này không phải một bài hướng dẫn chi tiết cách bạn xây một workflow hoàn chỉnh để AI có thể dạy mình mọi kiến thức trên đời. Mình chỉ muốn nó là một hạt mầm nảy trong đầu bạn, để bạn có mindset sử dụng AI hiệu quả để học bất cứ điều gì.</p>
     <p>Còn khi hạt mầm muốn sinh sôi, đâm chồi nảy lộc, hãy bỏ hạt mầm này vào một <em>"chậu nước"</em>. Chậu nước này chính là AI. Hãy đưa bài viết này cho AI để nó đọc hiểu và trao đổi với nó, để cả hai (người và máy) có thể hiểu rõ mindset này. Sau đó, cả hai sẽ cùng nhau xây dựng một workflow học tập phù hợp với bạn nhất.</p>
     <p>Sau khi đọc xong, hãy mở Claude / ChatGPT / Antigravity, paste link bài này vào, và bảo nó:</p>
     <blockquote class="collegial">
