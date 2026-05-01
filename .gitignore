@@ -8,3 +8,7 @@
 *.DS_Store
 .*
 *Zone.Identifier
+
+# Local-only sites (not deployed)
+sites/demo_valentine/
+sites/valentine/
